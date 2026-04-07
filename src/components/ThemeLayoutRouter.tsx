@@ -37,24 +37,24 @@ export const ThemeLayoutRouter: React.FC<Props> = ({
 
   // Sync theme with Google Sheet data on mount
   React.useEffect(() => {
-    if (config.active_theme) {
-      setThemeById(config.active_theme);
+    const baseTheme = isPremium ? config.active_theme : 1;
+    if (baseTheme) {
+      setThemeById(baseTheme);
     }
-  }, [config.active_theme]);
+  }, [config.active_theme, isPremium]);
 
   // Check URL parameters for theme override on client side
   React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const urlParams = new URLSearchParams(window.location.search);
-      const themeParam = urlParams.get('theme');
-      if (themeParam) {
-        const themeId = parseInt(themeParam);
-        if (themeId >= 1 && themeId <= 10) {
-          setThemeById(themeId);
-        }
+    if (!isPremium || typeof window === 'undefined') return;
+    const urlParams = new URLSearchParams(window.location.search);
+    const themeParam = urlParams.get('theme');
+    if (themeParam) {
+      const themeId = parseInt(themeParam);
+      if (themeId >= 1 && themeId <= 10) {
+        setThemeById(themeId);
       }
     }
-  }, [setThemeById]);
+  }, [isPremium, setThemeById]);
 
   const [showAdmin, setShowAdmin] = React.useState(false);
   const [showPortal, setShowPortal] = React.useState(false);
@@ -104,7 +104,7 @@ export const ThemeLayoutRouter: React.FC<Props> = ({
         </p>
       </footer>
       <FloatingActions whatsappUrl={identity.whatsapp_url} sheetId={sheetId} />
-      {showPortal && <AdminPortal currentSheetId={sheetId} currentThemeId={activeTheme.id} onClose={() => setShowPortal(false)} />}
+      {showPortal && <AdminPortal isPremium={isPremium} currentSheetId={sheetId} currentThemeId={activeTheme.id} onClose={() => setShowPortal(false)} />}
     </div>
   );
 };

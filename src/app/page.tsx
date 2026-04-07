@@ -18,9 +18,11 @@ export default async function Page({
   const data = await getPortfolioData();
   const { config, identity, skills, projects, experiences, services, testimonials, blogPosts } = data;
 
-  // Override theme if specified in URL
-  if (themeOverride && themeOverride >= 1 && themeOverride <= 10) {
+  // Override theme if specified in URL, only for premium users
+  if (data.isPremium && themeOverride && themeOverride >= 1 && themeOverride <= 10) {
     config.active_theme = themeOverride;
+  } else if (!data.isPremium) {
+    config.active_theme = 1;
   }
 
   return (
