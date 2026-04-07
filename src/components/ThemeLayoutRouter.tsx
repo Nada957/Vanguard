@@ -41,6 +41,21 @@ export const ThemeLayoutRouter: React.FC<Props> = ({
       setThemeById(config.active_theme);
     }
   }, [config.active_theme]);
+
+  // Check URL parameters for theme override on client side
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const themeParam = urlParams.get('theme');
+      if (themeParam) {
+        const themeId = parseInt(themeParam);
+        if (themeId >= 1 && themeId <= 10) {
+          setThemeById(themeId);
+        }
+      }
+    }
+  }, [setThemeById]);
+
   const [showAdmin, setShowAdmin] = React.useState(false);
   const [showPortal, setShowPortal] = React.useState(false);
   const [inputBuffer, setInputBuffer] = React.useState('');

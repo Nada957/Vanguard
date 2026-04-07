@@ -22,30 +22,24 @@ export const ThemeProvider: React.FC<{
   const [accentColor, setAccentColor] = useState(initialAccentColor || activeTheme.styles['--accent-color']);
   const [spotlightEnabled, setSpotlightEnabled] = useState(initialSpotlight ?? true);
 
-  const setThemeById = (id: number) => {
-    if (themes[id]) {
-      setActiveTheme(themes[id]);
-    }
-  };
-
-  useEffect(() => {
+  const applyThemeStyles = (theme: ThemeConfig, accent: string) => {
     const root = document.documentElement;
-    const styles = activeTheme.styles;
+    const styles = theme.styles;
 
     Object.entries(styles).forEach(([property, value]) => {
       root.style.setProperty(property, value);
     });
 
-    if (accentColor) {
-      root.style.setProperty('--accent-color', accentColor);
+    if (accent) {
+      root.style.setProperty('--accent-color', accent);
     }
 
-    if (activeTheme.category === 'Cyber') {
+    if (theme.category === 'Cyber') {
       root.style.setProperty('--radius-card', '0px');
       root.style.setProperty('--radius-button', '0px');
       root.style.setProperty('--radius-avatar', '0px');
       root.style.setProperty('--border-width-card', '2px');
-    } else if (activeTheme.category === 'Glass') {
+    } else if (theme.category === 'Glass') {
       root.style.setProperty('--radius-card', '24px');
       root.style.setProperty('--radius-button', '9999px');
       root.style.setProperty('--radius-avatar', '9999px');
@@ -56,11 +50,27 @@ export const ThemeProvider: React.FC<{
       root.style.setProperty('--radius-avatar', '8px');
       root.style.setProperty('--border-width-card', '1px');
     }
+  };
+
+  const setThemeById = (id: number) => {
+    if (themes[id]) {
+      setActiveTheme(themes[id]);
+      // Apply styles immediately for instant theme switching
+      applyThemeStyles(themes[id], accentColor);
+    }
+  };
+
+  useEffect(() => {
+    // Apply styles on mount and when theme/accent changes
+    applyThemeStyles(activeTheme, accentColor);
   }, [activeTheme, accentColor]);
 
   return (
     <ThemeContext.Provider value={{ activeTheme, setThemeById, accentColor, spotlightEnabled }}>
-      <div className="min-h-screen bg-[var(--primary-bg)] text-[var(--text-main)] font-[family-name:var(--font-main)] transition-colors duration-500">
+      <div 
+        className="min-h-screen bg-[var(--primary-bg)] text-[var(--text-main)] font-[family-name:var(--font-main)] transition-colors duration-200"
+        suppressHydrationWarning
+      >
         {children}
       </div>
     </ThemeContext.Provider>
