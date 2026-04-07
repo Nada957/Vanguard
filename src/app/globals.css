@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --radius-card: 16px;
+  --radius-button: 9999px;
+  --radius-avatar: 9999px;
+  --border-width-card: 1px;
+}
+
+body {
+  @apply antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom transitions */
+.transition-all-500 {
+  transition: all 0.5s ease-in-out;
+}
+
+/* Bento Grid Utilities */
+.bento-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, minmax(200px, auto));
+  }
+}
