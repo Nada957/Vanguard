@@ -29,7 +29,7 @@ export const Theme10 = ({ identity, skills, projects }: any) => {
               <p className="text-[#94A3B8] text-lg leading-relaxed max-w-md mb-10 font-medium italic opacity-80 group-hover:opacity-100 transition-opacity">{identity.bio}</p>
               
               <div className="flex gap-8 items-center justify-center md:justify-start">
-                 <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="px-14 py-4 bg-[#38BDF8] text-black font-black uppercase text-xs tracking-widest hover:bg-white hover:shadow-[0_0_40px_rgba(56,189,248,0.4)] transition-all">{identity.hire_me_text || 'CONNECT_OFFICIAL'}</a>
+                 <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="px-4 md:px-14 py-4 bg-[#38BDF8] text-black font-black uppercase text-xs tracking-widest hover:bg-white hover:shadow-[0_0_40px_rgba(56,189,248,0.4)] transition-all">{identity.hire_me_text || 'CONNECT_OFFICIAL'}</a>
                  <div className="flex gap-6">
                     {identity.social_links.map((link: any, i: number) => (
                       <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs font-black uppercase tracking-widest hover:text-[#38BDF8] hover:scale-105 transition-all opacity-60 hover:opacity-100">

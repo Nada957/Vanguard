@@ -23,7 +23,7 @@ export const Theme5 = ({ identity, skills, projects, experiences, services, test
               <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#FB7185] mb-4 opacity-80 font-mono">Expertise_Nexus</h2>
               <h1 className="text-4xl md:text-6xl font-serif font-black text-[#111827] mb-6 leading-tight italic tracking-tighter">{identity.user_name}</h1>
               <p className="text-[#6B7280] text-lg md:text-xl leading-relaxed max-w-2xl mb-10 font-medium italic">"{identity.bio}"</p>
-              <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="px-14 py-4 bg-[#FB7185] text-white font-bold rounded-full shadow-[0_15px_30px_rgba(251,113,133,0.2)] hover:bg-[#E11D48] transition-all transform hover:-translate-y-1 uppercase tracking-widest text-xs">
+              <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="px-4 md:px-14 py-4 bg-[#FB7185] text-white font-bold rounded-full shadow-[0_15px_30px_rgba(251,113,133,0.2)] hover:bg-[#E11D48] transition-all transform hover:-translate-y-1 uppercase tracking-widest text-xs">
                  {identity.hire_me_text || 'Connect With Me'}
               </a>
            </div>
@@ -102,7 +102,7 @@ export const Theme5 = ({ identity, skills, projects, experiences, services, test
         )}
 
         {/* Slim Social Footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center bg-white/40 p-10 rounded-full border border-white gap-8 px-14 mb-10 shadow-sm backdrop-blur-md">
+        <div className="flex flex-col md:flex-row justify-between items-center bg-white/40 p-4 md:p-10 rounded-full border border-white gap-4 md:gap-8 px-4 md:px-14 mb-10 shadow-sm backdrop-blur-md">
            <span className="text-[10px] font-black opacity-30 uppercase tracking-[0.5em]">Network_Encryption</span>
            <div className="flex flex-wrap justify-center gap-10">
               {identity.social_links.map((link: any, i: number) => (

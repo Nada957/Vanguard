@@ -26,7 +26,7 @@ export const Theme4 = ({ identity, skills, projects, experiences, services, test
               href={identity.hire_me_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 inline-block px-12 py-4 bg-[#F472B6] text-white font-bold rounded-2xl shadow-[0_15px_30px_rgba(244,114,182,0.3)] hover:scale-105 transition-transform hover:shadow-[0_20px_40px_rgba(244,114,182,0.4)] uppercase tracking-widest text-xs"
+              className="mt-10 inline-block px-4 md:px-12 py-4 bg-[#F472B6] text-white font-bold rounded-2xl shadow-[0_15px_30px_rgba(244,114,182,0.3)] hover:scale-105 transition-transform hover:shadow-[0_20px_40px_rgba(244,114,182,0.4)] uppercase tracking-widest text-xs"
              >
                 {identity.hire_me_text || 'INITIALIZE_CONTACT'}
              </a>

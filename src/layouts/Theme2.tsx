@@ -34,7 +34,7 @@ export const Theme2 = ({ identity, skills, projects, experiences, services, test
               href={identity.hire_me_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-12 py-3 bg-transparent border border-[var(--accent-color)] text-[var(--accent-color)] hover:bg-[var(--accent-color)] hover:text-black hover:shadow-[0_0_30px_var(--glow-color)] transition-all duration-500 font-bold uppercase tracking-[0.3em] text-[10px]"
+              className="inline-block px-4 md:px-12 py-3 bg-transparent border border-[var(--accent-color)] text-[var(--accent-color)] hover:bg-[var(--accent-color)] hover:text-black hover:shadow-[0_0_30px_var(--glow-color)] transition-all duration-500 font-bold uppercase tracking-[0.3em] text-[10px]"
             >
               {identity.hire_me_text || 'Contact Me'}
             </a>

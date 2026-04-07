@@ -25,7 +25,7 @@ export const Theme9 = ({ identity, skills, projects }: any) => {
               <h1 className="text-4xl font-bold tracking-tight text-[#1E293B] mb-6">{identity.user_name}</h1>
               <p className="text-[#64748B] text-base leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity font-medium italic">{identity.bio}</p>
               
-              <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="mt-10 px-12 py-4 bg-[#818CF8] text-white font-bold rounded-2xl shadow-xl hover:bg-[#6366F1] transition-all transform hover:-translate-y-1">
+              <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="mt-10 px-4 md:px-12 py-4 bg-[#818CF8] text-white font-bold rounded-2xl shadow-xl hover:bg-[#6366F1] transition-all transform hover:-translate-y-1">
                  {identity.hire_me_text || 'Hire Me Now'}
               </a>
            </div>

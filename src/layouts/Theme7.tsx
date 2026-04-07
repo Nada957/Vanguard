@@ -38,7 +38,7 @@ export const Theme7 = ({ identity, skills, projects, experiences, services, test
            <h1 className="text-4xl md:text-8xl font-black text-white italic tracking-tighter uppercase mb-8 drop-shadow-[0_0_30px_var(--glow-color)] text-center">{identity.user_name}</h1>
            <p className="text-[var(--text-muted)] text-lg md:text-xl text-center max-w-3xl transition-all font-bold tracking-[0.2em] uppercase opacity-60 group-hover:opacity-100 italic">"{identity.bio}"</p>
            
-           <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="mt-14 px-16 py-5 bg-[var(--accent-color)] text-black font-black uppercase text-sm tracking-[0.4em] hover:scale-110 hover:shadow-[0_0_50px_var(--glow-color)] transition-all shadow-xl">{identity.hire_me_text || 'INITIALIZE_COMM'}</a>
+           <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="mt-4 md:mt-14 px-4 md:px-16 py-3 md:py-5 bg-[var(--accent-color)] text-black font-black uppercase text-sm tracking-[0.4em] hover:scale-110 hover:shadow-[0_0_50px_var(--glow-color)] transition-all shadow-xl">{identity.hire_me_text || 'INITIALIZE_COMM'}</a>
         </div>
 
         {/* Experience Section */}
