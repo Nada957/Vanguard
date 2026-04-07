@@ -4,14 +4,14 @@ import { SocialIcon } from '@/components/SocialIcon';
 
 export const Theme9 = ({ identity, skills, projects }: any) => {
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-[#1E293B] p-4 md:p-14 font-sans relative flex flex-col items-center justify-center transition-opacity duration-1000 overflow-hidden">
+    <div className="min-h-screen bg-[#F8FAFC] text-[#1E293B] p-3 md:p-8 lg:p-14 font-sans relative flex flex-col items-center justify-center transition-opacity duration-1000 overflow-hidden">
       
       {/* Huge mesh gradient background blobs */}
       <div className="absolute top-[-20%] left-[-20%] w-[1000px] h-[1000px] bg-[#E0E7FF] rounded-full filter blur-[150px] opacity-60 animate-pulse"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] bg-[#FDF2F8] rounded-full filter blur-[120px] opacity-70 animate-pulse transition-all duration-500 delay-500"></div>
       <div className="absolute top-[20%] right-[10%] w-[600px] h-[600px] bg-[#EEF2FF] rounded-full filter blur-[100px] opacity-40 animate-pulse"></div>
 
-      <div className="relative z-10 w-full max-w-6xl grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div className="relative z-10 w-full px-2 md:px-4 max-w-full lg:max-w-6xl grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
         
         {/* Left column info */}
         <div className="md:col-span-5 flex flex-col gap-8">

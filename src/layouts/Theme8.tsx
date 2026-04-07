@@ -4,12 +4,12 @@ import { SocialIcon } from '@/components/SocialIcon';
 
 export const Theme8 = ({ identity, skills, projects, experiences, services, testimonials }: any) => {
   return (
-    <div className="min-h-screen bg-black text-[#FDE68A] p-4 md:p-14 font-serif relative transition-opacity duration-1000 overflow-x-hidden">
+    <div className="min-h-screen bg-black text-[#FDE68A] p-3 md:p-8 lg:p-14 font-serif relative transition-opacity duration-1000 overflow-x-hidden">
       
       {/* Background elegant gold grain/stars */}
       <div className="fixed inset-0 z-0 opacity-[0.1] pointer-events-none" style={{ backgroundImage: 'radial-gradient(1px 1px at 20px 30px, var(--accent-color), transparent), radial-gradient(1px 1px at 40px 70px, var(--accent-color), transparent)', backgroundSize: '100px 100px' }}></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row gap-14 items-stretch font-serif">
+      <div className="relative z-10 w-full px-2 md:px-4 max-w-full lg:max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-14 items-stretch font-serif">
         
         {/* Left Side: Massive Hero Image / Info */}
         <div className="md:w-[45%] flex flex-col items-center md:items-start text-center md:text-left justify-center relative">

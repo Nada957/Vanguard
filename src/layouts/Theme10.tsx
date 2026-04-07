@@ -4,13 +4,13 @@ import { SocialIcon } from '@/components/SocialIcon';
 
 export const Theme10 = ({ identity, skills, projects }: any) => {
   return (
-    <div className="min-h-screen bg-[#020617] text-[#F8FAFC] p-4 md:p-14 font-sans relative transition-opacity duration-1000 overflow-hidden">
+    <div className="min-h-screen bg-[#020617] text-[#F8FAFC] p-3 md:p-8 lg:p-14 font-sans relative transition-opacity duration-1000 overflow-hidden">
       
       {/* Background dark blue subtle mesh bg */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#38BDF8] rounded-full filter blur-[200px] opacity-[0.05] -z-10"></div>
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#38BDF8] rounded-full filter blur-[150px] opacity-[0.03] -z-10"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-10">
+      <div className="relative z-10 w-full px-2 md:px-4 max-w-full lg:max-w-7xl mx-auto flex flex-col gap-8 md:gap-10">
         
         {/* Navigation row style header */}
         <div className="w-full flex justify-between border-b border-[#1E293B] pb-8 items-center px-10">

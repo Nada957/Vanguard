@@ -7,31 +7,31 @@ import { PDFExport } from '@/components/PDFExport';
 
 export const Theme1 = ({ identity, skills, projects, experiences, services, testimonials, blogPosts }: any) => {
   return (
-    <div className="min-h-screen bg-black text-white p-4 md:p-10 font-mono relative overflow-hidden">
+    <div className="min-h-screen bg-black text-white p-3 md:p-6 lg:p-10 font-mono relative overflow-hidden">
       {/* Grid Overlay */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'linear-gradient(var(--card-border) 1px, transparent 1px), linear-gradient(90deg, var(--card-border) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-4">
+      <div className="relative z-10 max-w-full lg:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4">
         
         {/* Header Block */}
-        <div className="md:col-span-12 border-2 border-[var(--card-border)] p-4 flex justify-between items-center bg-black/80 shadow-[0_0_15px_var(--glow-color)]">
-          <div className="flex items-center gap-4">
-             <div className="w-3 h-3 bg-[var(--accent-color)] animate-pulse"></div>
-             <span className="text-[var(--accent-color)] font-bold tracking-[0.3em]">SYSTEM.ACCESS_GRANTED</span>
+        <div className="md:col-span-12 border-2 border-[var(--card-border)] p-3 md:p-4 flex flex-col sm:flex-row justify-between items-center bg-black/80 shadow-[0_0_15px_var(--glow-color)] gap-2">
+          <div className="flex items-center gap-2 md:gap-4">
+             <div className="w-2 h-2 md:w-3 md:h-3 bg-[var(--accent-color)] animate-pulse"></div>
+             <span className="text-[var(--accent-color)] font-bold tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm">SYSTEM.ACCESS_GRANTED</span>
           </div>
-          <div className="text-xs opacity-50 uppercase font-bold">User: {identity.user_name}</div>
+          <div className="text-[10px] md:text-xs opacity-50 uppercase font-bold whitespace-nowrap">User: {identity.user_name}</div>
         </div>
 
         {/* Profile Block */}
-        <div className="md:col-span-4 border-2 border-[var(--card-border)] p-6 bg-black/80 flex flex-col items-center text-center shadow-[inset_0_0_20px_rgba(255,0,0,0.1)]">
+        <div className="md:col-span-4 border-2 border-[var(--card-border)] p-3 md:p-6 bg-black/80 flex flex-col items-center text-center shadow-[inset_0_0_20px_rgba(255,0,0,0.1)]">
           {identity.profile_img_url && (
-            <div className="relative w-48 h-48 mb-6 border-2 border-[var(--accent-color)] p-1 shadow-[0_0_20px_var(--glow-color)]">
+            <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mb-4 md:mb-6 border-2 border-[var(--accent-color)] p-1 shadow-[0_0_20px_var(--glow-color)]">
               <Image src={identity.profile_img_url} alt={identity.user_name} fill className="object-cover grayscale hover:grayscale-0 transition-all duration-500" />
             </div>
           )}
-          <h2 className="text-3xl font-bold text-[var(--accent-color)] mb-2 uppercase tracking-tighter italic">{identity.user_name}</h2>
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[var(--accent-color)] mb-2 uppercase tracking-tighter italic">{identity.user_name}</h2>
           <div className="w-full h-px bg-[var(--card-border)] my-4"></div>
-          <p className="text-xs leading-loose text-left opacity-80 mb-6">{identity.bio}</p>
+          <p className="text-[11px] md:text-xs leading-relaxed text-left opacity-80 mb-4 md:mb-6">{identity.bio}</p>
           
           <div className="w-full space-y-2 mt-auto">
             <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="block w-full py-3 border border-[var(--accent-color)] text-[var(--accent-color)] hover:bg-[var(--accent-color)] hover:text-black transition-all font-bold uppercase tracking-[0.2em] text-xs">

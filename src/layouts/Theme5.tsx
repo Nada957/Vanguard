@@ -4,25 +4,25 @@ import { SocialIcon } from '@/components/SocialIcon';
 
 export const Theme5 = ({ identity, skills, projects, experiences, services, testimonials }: any) => {
   return (
-    <div className="min-h-screen bg-[#FFFAF0] text-[#1F2937] p-4 md:p-14 font-sans relative flex flex-col items-center transition-opacity duration-1000 overflow-x-hidden">
+    <div className="min-h-screen bg-[#FFFAF0] text-[#1F2937] p-3 md:p-8 lg:p-14 font-sans relative flex flex-col items-center transition-opacity duration-1000 overflow-x-hidden">
       
       {/* Decorative soft pink blobs bg */}
       <div className="fixed top-0 right-0 w-[600px] h-[600px] bg-[#FB7185] rounded-full filter blur-[180px] opacity-[0.03] -z-10"></div>
       <div className="fixed bottom-0 left-0 w-[500px] h-[500px] bg-[#FB7185] rounded-full filter blur-[150px] opacity-[0.02] -z-10"></div>
 
-      <div className="relative z-10 w-full max-w-5xl flex flex-col gap-12">
+      <div className="relative z-10 w-full px-2 md:px-4 max-w-full lg:max-w-5xl flex flex-col gap-8 md:gap-12">
         
         {/* Main Hero Header */}
-        <div className="flex flex-col md:flex-row items-center gap-10 bg-white/40 border border-white p-10 md:p-14 rounded-[3rem] shadow-[0_15px_40px_rgba(0,0,0,0.02)] backdrop-blur-xl">
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 bg-white/40 border border-white p-6 md:p-10 lg:p-14 rounded-[2rem] md:rounded-[3rem] shadow-[0_15px_40px_rgba(0,0,0,0.02)] backdrop-blur-xl">
            {identity.profile_img_url && (
-              <div className="relative w-44 h-44 rounded-[2rem] overflow-hidden shadow-2xl ring-8 ring-white transition-all duration-500 hover:scale-105">
+              <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-44 lg:h-44 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl ring-4 md:ring-8 ring-white transition-all duration-500 hover:scale-105">
                 <Image src={identity.profile_img_url} alt={identity.user_name} fill className="object-cover" />
               </div>
            )}
            <div className="text-center md:text-left flex-1">
-              <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#FB7185] mb-4 opacity-80 font-mono">Expertise_Nexus</h2>
-              <h1 className="text-4xl md:text-6xl font-serif font-black text-[#111827] mb-6 leading-tight italic tracking-tighter">{identity.user_name}</h1>
-              <p className="text-[#6B7280] text-lg md:text-xl leading-relaxed max-w-2xl mb-10 font-medium italic">"{identity.bio}"</p>
+              <h2 className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-[#FB7185] mb-2 md:mb-4 opacity-80 font-mono">Expertise_Nexus</h2>
+              <h1 className="text-2xl md:text-4xl lg:text-6xl font-serif font-black text-[#111827] mb-4 md:mb-6 leading-tight italic tracking-tighter">{identity.user_name}</h1>
+              <p className="text-[#6B7280] text-sm md:text-base lg:text-xl leading-relaxed max-w-2xl mb-6 md:mb-10 font-medium italic">"{identity.bio}"</p>
               <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="px-4 md:px-14 py-4 bg-[#FB7185] text-white font-bold rounded-full shadow-[0_15px_30px_rgba(251,113,133,0.2)] hover:bg-[#E11D48] transition-all transform hover:-translate-y-1 uppercase tracking-widest text-xs">
                  {identity.hire_me_text || 'Connect With Me'}
               </a>

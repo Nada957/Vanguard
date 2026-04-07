@@ -4,32 +4,32 @@ import { SocialIcon } from '@/components/SocialIcon';
 
 export const Theme6 = ({ identity, skills, projects, experiences, services, testimonials }: any) => {
   return (
-    <div className="min-h-screen bg-[#020617] text-[#94A3B8] p-4 md:p-8 font-mono relative transition-opacity duration-1000 overflow-x-hidden">
+    <div className="min-h-screen bg-[#020617] text-[#94A3B8] p-3 md:p-6 lg:p-8 font-mono relative transition-opacity duration-1000 overflow-x-hidden">
       
       {/* Decorative vertical lines bg */}
       <div className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(90deg, #2DD4BF 1px, transparent 1px)', backgroundSize: '100px 100px' }}></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 p-px bg-[#2DD4BF]/20">
+      <div className="relative z-10 w-full px-2 md:px-3 max-w-full lg:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-1 md:gap-2 lg:gap-4 p-px bg-[#2DD4BF]/20">
         
         {/* Top Header Label */}
-        <div className="md:col-span-12 bg-black/90 p-4 flex justify-between items-center border border-[#2DD4BF]/30 shadow-[0_0_15px_rgba(45,212,191,0.1)]">
-           <div className="flex gap-4">
-              <span className="text-[#2DD4BF] font-black text-xs tracking-widest">[ SYSTEM_DASHBOARD_V6.0 ]</span>
-              <span className="text-[10px] opacity-30 mt-0.5 uppercase tracking-widest">User_Session: {identity.user_name}</span>
+        <div className="md:col-span-12 bg-black/90 p-3 md:p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center border border-[#2DD4BF]/30 shadow-[0_0_15px_rgba(45,212,191,0.1)] gap-2">
+           <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+              <span className="text-[#2DD4BF] font-black text-[10px] md:text-xs tracking-widest">[ SYSTEM_DASHBOARD_V6.0 ]</span>
+              <span className="text-[8px] md:text-[10px] opacity-30 uppercase tracking-widest">User_Session: {identity.user_name}</span>
            </div>
-           <div className="text-[9px] font-bold uppercase tracking-[0.3em] text-[#2DD4BF]">Latency: 14ms // Secure // Biometrics_Confirmed</div>
+           <div className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-[#2DD4BF]">Latency: 14ms // Secure</div>
         </div>
 
         {/* Left Side: Avatar & Bio */}
-        <div className="md:col-start-1 md:col-span-3 bg-black/80 border border-[#2DD4BF]/30 p-8 flex flex-col items-center">
+        <div className="md:col-start-1 md:col-span-3 bg-black/80 border border-[#2DD4BF]/30 p-4 md:p-6 lg:p-8 flex flex-col items-center">
            {identity.profile_img_url && (
-              <div className="relative w-full aspect-square border border-[#2DD4BF] p-2 bg-[#020617] mb-8 shadow-[0_0_20px_rgba(45,212,191,0.2)] group overflow-hidden">
+              <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-full lg:aspect-square border border-[#2DD4BF] p-2 bg-[#020617] mb-6 md:mb-8 shadow-[0_0_20px_rgba(45,212,191,0.2)] group overflow-hidden">
                 <Image src={identity.profile_img_url} alt={identity.user_name} fill className="object-cover grayscale brightness-125 transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110" />
               </div>
            )}
-           <h2 className="text-[#F0FDFA] font-black text-2xl uppercase tracking-tighter mb-4 text-center italic">{identity.user_name}</h2>
-           <div className="w-full h-px bg-[#2DD4BF]/20 mb-6"></div>
-           <p className="text-[10px] leading-relaxed text-justify opacity-80 font-mono tracking-[0.15em] uppercase italic">
+           <h2 className="text-[#F0FDFA] font-black text-lg md:text-2xl uppercase tracking-tighter mb-3 md:mb-4 text-center italic">{identity.user_name}</h2>
+           <div className="w-full h-px bg-[#2DD4BF]/20 mb-4 md:mb-6"></div>
+           <p className="text-[9px] md:text-[10px] leading-relaxed text-left md:text-justify opacity-80 font-mono tracking-[0.1em] md:tracking-[0.15em] uppercase italic">
               {identity.bio}
            </p>
            

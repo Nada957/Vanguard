@@ -4,24 +4,24 @@ import { SocialIcon } from '@/components/SocialIcon';
 
 export const Theme4 = ({ identity, skills, projects, experiences, services, testimonials }: any) => {
   return (
-    <div className="min-h-screen bg-[#020617] text-white p-4 md:p-14 font-sans relative flex flex-col items-center transition-opacity duration-1000 overflow-x-hidden">
+    <div className="min-h-screen bg-[#020617] text-white p-3 md:p-8 lg:p-14 font-sans relative flex flex-col items-center transition-opacity duration-1000 overflow-x-hidden">
       
       {/* Dynamic blurred pink circles bg */}
       <div className="fixed top-1/4 right-1/4 w-[500px] h-[500px] bg-[#F472B6] rounded-full filter blur-[150px] opacity-[0.1] -z-10 animate-pulse"></div>
       <div className="fixed bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#312E81] rounded-full filter blur-[120px] opacity-[0.15] -z-10 animate-pulse transition-all duration-500 delay-500"></div>
 
-      <div className="relative z-10 w-full max-w-6xl grid grid-cols-1 md:grid-cols-12 gap-6">
+      <div className="relative z-10 w-full px-2 md:px-4 max-w-full lg:max-w-6xl grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
         
         {/* Profile Bento Block */}
-        <div className="md:col-span-12 bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col md:flex-row items-center gap-12 group transition-all duration-700 hover:border-[#F472B6]/30 mb-6">
+        <div className="md:col-span-12 bg-white/5 backdrop-blur-2xl border border-white/10 p-6 md:p-10 lg:p-14 rounded-[2rem] md:rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col md:flex-row items-center gap-6 md:gap-12 group transition-all duration-700 hover:border-[#F472B6]/30 mb-4 md:mb-6">
           {identity.profile_img_url && (
-            <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-[2.5rem] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.5)] ring-1 ring-white/20 transition-all duration-700 group-hover:scale-105 group-hover:ring-[#F472B6]/40">
+            <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.5)] ring-1 ring-white/20 transition-all duration-700 group-hover:scale-105 group-hover:ring-[#F472B6]/40">
               <Image src={identity.profile_img_url} alt={identity.user_name} fill className="object-cover" />
             </div>
           )}
           <div className="text-center md:text-left flex-1">
-             <h1 className="text-4xl md:text-7xl font-bold bg-gradient-to-br from-white via-white to-pink-200 bg-clip-text text-transparent mb-6 tracking-tight drop-shadow-xl">{identity.user_name}</h1>
-             <p className="text-[#9CA3AF] text-lg md:text-xl leading-relaxed max-w-3xl transition-all duration-700 opacity-80 group-hover:opacity-100 italic">{identity.bio}</p>
+             <h1 className="text-2xl md:text-4xl lg:text-7xl font-bold bg-gradient-to-br from-white via-white to-pink-200 bg-clip-text text-transparent mb-4 md:mb-6 tracking-tight drop-shadow-xl">{identity.user_name}</h1>
+             <p className="text-[#9CA3AF] text-base md:text-lg lg:text-xl leading-relaxed max-w-3xl transition-all duration-700 opacity-80 group-hover:opacity-100 italic">{identity.bio}</p>
              <a 
               href={identity.hire_me_url}
               target="_blank"

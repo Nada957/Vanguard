@@ -4,39 +4,39 @@ import { SocialIcon } from '@/components/SocialIcon';
 
 export const Theme7 = ({ identity, skills, projects, experiences, services, testimonials }: any) => {
   return (
-    <div className="min-h-screen bg-black text-white p-4 md:p-14 font-mono relative transition-opacity duration-1000 flex flex-col items-center overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white p-3 md:p-8 lg:p-14 font-mono relative transition-opacity duration-1000 flex flex-col items-center overflow-x-hidden">
       
       {/* Top spotlight effect */}
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-[radial-gradient(circle_at_50%_0%,var(--accent-color)_0%,transparent_70%)] opacity-[0.15] pointer-events-none"></div>
 
-      <div className="relative z-10 w-full max-w-5xl flex flex-col gap-8">
+      <div className="relative z-10 w-full px-2 md:px-4 max-w-full lg:max-w-5xl flex flex-col gap-6 md:gap-8">
         
         {/* Top Centered Status Bar */}
-        <div className="w-full flex justify-between px-10 py-6 border-2 border-[var(--card-border)] bg-black/60 backdrop-blur-xl shadow-[0_0_30px_var(--shadow-color)] group hover:border-[var(--accent-color)]/40 transition-colors">
-           <span className="text-[var(--accent-color)] font-black text-xs tracking-[0.4em] uppercase">ID_DASHBOARD // {identity.user_name}</span>
-           <div className="flex gap-6 items-center">
+        <div className="w-full flex flex-col md:flex-row justify-between gap-2 md:gap-0 px-4 md:px-10 py-4 md:py-6 border-2 border-[var(--card-border)] bg-black/60 backdrop-blur-xl shadow-[0_0_30px_var(--shadow-color)] group hover:border-[var(--accent-color)]/40 transition-colors">
+           <span className="text-[var(--accent-color)] font-black text-[9px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] uppercase">ID_DASHBOARD // {identity.user_name}</span>
+           <div className="flex gap-4 md:gap-6 items-center">
               <div className="flex gap-1.5">
-                 <div className="w-2 h-2 rounded-full bg-[var(--accent-color)] animate-pulse"></div>
-                 <div className="w-2 h-2 rounded-full bg-[var(--accent-color)]/40"></div>
-                 <div className="w-2 h-2 rounded-full bg-[var(--accent-color)]/20"></div>
+                 <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[var(--accent-color)] animate-pulse"></div>
+                 <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[var(--accent-color)]/40"></div>
+                 <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[var(--accent-color)]/20"></div>
               </div>
-              <span className="text-[10px] opacity-40 uppercase tracking-[0.3em] font-bold">STATUS: COMPLIANT</span>
+              <span className="text-[9px] md:text-[10px] opacity-40 uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold">STATUS: COMPLIANT</span>
            </div>
         </div>
 
         {/* Huge Profile Card with Spotlight */}
-        <div className="w-full border-4 border-[var(--card-border)] bg-black/80 shadow-[0_0_100px_var(--shadow-color)] relative flex flex-col items-center justify-center p-12 md:p-20 overflow-hidden group hover:border-[var(--accent-color)]/30 transition-all duration-700">
+        <div className="w-full border-4 border-[var(--card-border)] bg-black/80 shadow-[0_0_100px_var(--shadow-color)] relative flex flex-col items-center justify-center p-6 md:p-12 lg:p-20 overflow-hidden group hover:border-[var(--accent-color)]/30 transition-all duration-700">
            
            {/* Spotlight inner glow */}
            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,var(--accent-color)_0%,transparent_60%)] opacity-10 pointer-events-none group-hover:opacity-30 transition-opacity duration-1000"></div>
 
            {identity.profile_img_url && (
-              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden mb-12 shadow-[0_0_60px_var(--glow-color)] ring-8 ring-[var(--accent-color)] group-hover:scale-105 transition-all duration-700 group-hover:ring-[var(--accent-color)]/80">
+              <div className="relative w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden mb-6 md:mb-12 shadow-[0_0_60px_var(--glow-color)] ring-4 md:ring-8 ring-[var(--accent-color)] group-hover:scale-105 transition-all duration-700 group-hover:ring-[var(--accent-color)]/80">
                 <Image src={identity.profile_img_url} alt={identity.user_name} fill className="object-cover grayscale brightness-125 group-hover:grayscale-0 transition-all duration-700" />
               </div>
            )}
-           <h1 className="text-4xl md:text-8xl font-black text-white italic tracking-tighter uppercase mb-8 drop-shadow-[0_0_30px_var(--glow-color)] text-center">{identity.user_name}</h1>
-           <p className="text-[var(--text-muted)] text-lg md:text-xl text-center max-w-3xl transition-all font-bold tracking-[0.2em] uppercase opacity-60 group-hover:opacity-100 italic">"{identity.bio}"</p>
+           <h1 className="text-2xl md:text-4xl lg:text-8xl font-black text-white italic tracking-tighter uppercase mb-4 md:mb-8 drop-shadow-[0_0_30px_var(--glow-color)] text-center">{identity.user_name}</h1>
+           <p className="text-[var(--text-muted)] text-base md:text-lg lg:text-xl text-center max-w-3xl transition-all font-bold tracking-[0.15em] md:tracking-[0.2em] uppercase opacity-60 group-hover:opacity-100 italic">{identity.bio}"</p>
            
            <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="mt-4 md:mt-14 px-4 md:px-16 py-3 md:py-5 bg-[var(--accent-color)] text-black font-black uppercase text-sm tracking-[0.4em] hover:scale-110 hover:shadow-[0_0_50px_var(--glow-color)] transition-all shadow-xl">{identity.hire_me_text || 'INITIALIZE_COMM'}</a>
         </div>

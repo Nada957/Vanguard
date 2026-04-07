@@ -4,30 +4,30 @@ import { SocialIcon } from '@/components/SocialIcon';
 
 export const Theme3 = ({ identity, skills, projects, experiences, services, testimonials }: any) => {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center p-6 md:p-14 font-mono relative transition-opacity duration-1000 overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center p-4 md:p-8 lg:p-14 font-mono relative transition-opacity duration-1000 overflow-x-hidden">
       
       {/* Delicate white crosshairs background */}
       <div className="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none opacity-20"></div>
       
-      <div className="relative z-10 w-full max-w-3xl flex flex-col items-center text-center">
+      <div className="relative z-10 w-full px-2 md:px-4 max-w-full lg:max-w-3xl flex flex-col items-center text-center">
         
         {/* Simple square avatar with thick white border */}
         {identity.profile_img_url && (
-          <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-none overflow-hidden mb-12 border-4 border-white shadow-[0_0_50px_rgba(255,255,255,0.1)] hover:shadow-[0_0_80px_rgba(255,255,255,0.3)] transition-all duration-500 hover:scale-105">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-none overflow-hidden mb-8 md:mb-12 border-4 border-white shadow-[0_0_50px_rgba(255,255,255,0.1)] hover:shadow-[0_0_80px_rgba(255,255,255,0.3)] transition-all duration-500 hover:scale-105">
             <Image src={identity.profile_img_url} alt={identity.user_name} fill className="object-cover grayscale" />
           </div>
         )}
 
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6 uppercase italic">
+        <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold tracking-tighter text-white mb-4 md:mb-6 uppercase italic">
            {identity.user_name}
         </h1>
         
-        <div className="w-24 h-1 bg-white mb-10"></div>
+        <div className="w-16 md:w-24 h-1 bg-white mb-8 md:mb-10"></div>
         
         {/* About Section */}
-        <div className="max-w-2xl mb-20 text-left border-l-2 border-white/10 pl-6 py-4 bg-white/5">
-           <h2 className="text-[10px] uppercase tracking-[0.5em] text-white/40 mb-4 font-bold">0x00_BIOGRAPHY</h2>
-           <p className="text-[#a1a1aa] text-sm md:text-base leading-loose font-mono uppercase tracking-widest italic">
+        <div className="max-w-2xl mb-16 md:mb-20 text-left border-l-2 border-white/10 pl-4 md:pl-6 py-4 bg-white/5 px-3 md:px-0">
+           <h2 className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] md:tracking-[0.5em] text-white/40 mb-3 md:mb-4 font-bold">0x00_BIOGRAPHY</h2>
+           <p className="text-[#a1a1aa] text-xs md:text-sm lg:text-base leading-loose font-mono uppercase tracking-widest italic">
               {identity.bio}
            </p>
         </div>

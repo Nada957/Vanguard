@@ -4,52 +4,52 @@ import { SocialIcon } from '@/components/SocialIcon';
 
 export const Theme2 = ({ identity, skills, projects, experiences, services, testimonials }: any) => {
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center p-6 md:p-20 font-serif relative overflow-x-hidden transition-opacity duration-1000">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center p-4 md:p-12 lg:p-20 font-serif relative overflow-x-hidden transition-opacity duration-1000">
       
       {/* Background radial glow */}
       <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vw] bg-[radial-gradient(circle,rgba(0,240,255,0.05)_0%,transparent_70%)] pointer-events-none"></div>
 
-      <div className="relative z-10 w-full max-w-3xl flex flex-col items-center text-center">
+      <div className="relative z-10 w-full px-2 md:px-4 max-w-2xl lg:max-w-3xl flex flex-col items-center text-center">
         
         {/* Profile Circle */}
         {identity.profile_img_url && (
-          <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden mb-10 shadow-[0_0_40px_var(--glow-color)] ring-2 ring-[var(--accent-color)] ring-offset-8 ring-offset-black transition-all duration-500 hover:scale-105">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden mb-6 md:mb-10 shadow-[0_0_40px_var(--glow-color)] ring-2 ring-[var(--accent-color)] ring-offset-4 md:ring-offset-8 ring-offset-black transition-all duration-500 hover:scale-105">
             <Image src={identity.profile_img_url} alt={identity.user_name} fill className="object-cover" />
           </div>
         )}
 
         {/* Name & Bio */}
-        <h1 className="text-5xl md:text-7xl font-bold tracking-widest text-white mb-6 uppercase drop-shadow-[0_0_15px_var(--glow-color)]">
+        <h1 className="text-2xl md:text-5xl lg:text-7xl font-bold tracking-widest text-white mb-4 md:mb-6 uppercase drop-shadow-[0_0_15px_var(--glow-color)]">
            {identity.user_name}
         </h1>
         
-        <div className="w-24 h-px bg-[var(--accent-color)] mb-10 opacity-50"></div>
+        <div className="w-16 md:w-24 h-px bg-[var(--accent-color)] mb-6 md:mb-10 opacity-50"></div>
         
-        <div className="max-w-2xl mb-16 px-4">
-           <h2 className="text-[10px] font-mono uppercase tracking-[0.5em] text-[var(--accent-color)] mb-4 opacity-80 font-bold">Biography</h2>
-           <p className="text-[var(--text-muted)] text-base md:text-lg leading-relaxed font-serif italic mb-8">
+        <div className="max-w-2xl mb-12 md:mb-16 px-3 md:px-4">
+           <h2 className="text-[9px] md:text-[10px] font-mono uppercase tracking-[0.4em] md:tracking-[0.5em] text-[var(--accent-color)] mb-3 md:mb-4 opacity-80 font-bold">Biography</h2>
+           <p className="text-[var(--text-muted)] text-sm md:text-base lg:text-lg leading-relaxed font-serif italic mb-6 md:mb-8">
               {identity.bio}
            </p>
            <a 
               href={identity.hire_me_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-4 md:px-12 py-3 bg-transparent border border-[var(--accent-color)] text-[var(--accent-color)] hover:bg-[var(--accent-color)] hover:text-black hover:shadow-[0_0_30px_var(--glow-color)] transition-all duration-500 font-bold uppercase tracking-[0.3em] text-[10px]"
+              className="inline-block px-3 md:px-4 lg:px-12 py-2 md:py-3 bg-transparent border border-[var(--accent-color)] text-[var(--accent-color)] hover:bg-[var(--accent-color)] hover:text-black hover:shadow-[0_0_30px_var(--glow-color)] transition-all duration-500 font-bold uppercase tracking-[0.3em] text-[9px] md:text-[10px]"
             >
               {identity.hire_me_text || 'Contact Me'}
             </a>
         </div>
 
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 text-left mb-20">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 text-left mb-16 md:mb-20 px-2 md:px-0">
            {/* Experience */}
            {experiences && experiences.length > 0 && (
-             <div className="space-y-8">
-                <h3 className="text-[10px] font-mono uppercase tracking-[0.5em] text-[var(--accent-color)] border-b border-white/10 pb-4 font-bold">Experience</h3>
-                <div className="space-y-10">
+             <div className="space-y-6 md:space-y-8">
+                <h3 className="text-[9px] md:text-[10px] font-mono uppercase tracking-[0.4em] md:tracking-[0.5em] text-[var(--accent-color)] border-b border-white/10 pb-3 md:pb-4 font-bold">Experience</h3>
+                <div className="space-y-8 md:space-y-10">
                    {experiences.map((exp: any, i: number) => (
                       <div key={i} className="group">
-                         <div className="text-[9px] font-mono text-[var(--accent-color)] mb-1 uppercase tracking-widest">{exp.period}</div>
-                         <h4 className="text-xl font-bold mb-1 group-hover:text-[var(--accent-color)] transition-colors uppercase">{exp.role}</h4>
+                         <div className="text-[8px] md:text-[9px] font-mono text-[var(--accent-color)] mb-1 uppercase tracking-widest">{exp.period}</div>
+                         <h4 className="text-base md:text-xl font-bold mb-1 group-hover:text-[var(--accent-color)] transition-colors uppercase">{exp.role}</h4>
                          <div className="text-xs uppercase opacity-40 mb-3 tracking-widest">{exp.company}</div>
                          <p className="text-xs text-[var(--text-muted)] leading-relaxed italic">{exp.description}</p>
                       </div>
