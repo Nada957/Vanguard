@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { getPortfolioData } from '@/lib/google-sheets';
 import { ThemeLayoutRouter } from '@/components/ThemeLayoutRouter';
 import { Spotlight } from '@/components/BentoComponents';
+import { LoadingSkeleton } from '@/components/LoadingSkeleton';
 
 export const dynamic = 'force-dynamic';
-export const revalidate = 60;
+export const revalidate = 0;
 
-export default async function Page({ 
+export default async function Page({
+  searchParams
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}) {
+  return (
+    <Suspense fallback={<LoadingSkeleton />}>
+      <PortfolioContent searchParams={searchParams} />
+    </Suspense>
+  );
+}
+
+async function PortfolioContent({ 
   searchParams 
 }: { 
   searchParams: Promise<{ [key: string]: string | string[] | undefined }> 

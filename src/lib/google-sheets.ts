@@ -76,7 +76,7 @@ const SHEET_ID = process.env.NEXT_PUBLIC_SHEET_ID || 'YOUR_SHEET_ID_HERE';
 async function fetchSheetData(sheetId: string) {
   const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
   const response = await fetch(url, { 
-    next: { revalidate: 60 } 
+    next: { revalidate: 0 } 
   }); 
   const text = await response.text();
   
