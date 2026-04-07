@@ -84,7 +84,7 @@ export const Theme7 = ({ identity, skills, projects, experiences, services, test
               {skills.map((skill: any, i: number) => (
                 <div key={i} className="group/skill">
                    <div className="flex justify-between text-[11px] font-black uppercase tracking-[0.3em] mb-4 group-hover/skill:text-[var(--accent-color)] transition-colors">
-                      <span>{skill.name}</span>
+                      <span>{skill.icon ? `${skill.icon} ${skill.name}` : skill.name}</span>
                       <span className="opacity-40">{skill.percentage}%</span>
                    </div>
                    <div className="h-6 border-2 border-[var(--card-border)] p-1 bg-black overflow-hidden relative group-hover/skill:border-[var(--accent-color)]/40 transition-colors">

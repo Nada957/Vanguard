@@ -5,12 +5,17 @@ Config,spotlight_enabled,TRUE,
 Config,license_key,PREMIUM_10X_UNLOCK,
 Identity,user_name,Your Name,
 Identity,bio,Full-Stack Developer | Security Enthusiast,
+Identity,about,I build polished, high-performance apps for modern teams, blending design, development, and deployment into one seamless delivery.,
 Identity,email,hello@example.com,
 Identity,profile_img_url,https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=250&auto=format&fit=crop,
 Social,GitHub,https://github.com/yourname,
 Social,LinkedIn,https://linkedin.com/in/yourname,
-Skill,React / Next.js,90,
-Skill,TypeScript,85,
-Skill,Tailwind CSS,95,
+Skill,React,90,⚛️
+Skill,TypeScript,85,🔷
+Skill,Node.js,80,🟢
+Skill,Next.js,85,⚫️
+Skill,Tailwind CSS,95,🌬️
+Skill,Git,80,🐙
+Skill,Figma,75,🎨
 Project,Project Alpha,https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop,https://example.com/project-alpha
 Project,Neon Dashboard,https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop,https://example.com/neon-dashboard

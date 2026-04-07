@@ -107,7 +107,7 @@ export const Theme6 = ({ identity, skills, projects, experiences, services, test
               {skills.map((skill: any, i: number) => (
                 <div key={i} className="flex flex-col gap-2 group">
                    <div className="flex justify-between items-end">
-                      <span className="text-[9px] font-black uppercase tracking-widest text-[#F0FDFA] group-hover:text-[#2DD4BF] transition-colors">{skill.name}</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-[#F0FDFA] group-hover:text-[#2DD4BF] transition-colors">{skill.icon ? `${skill.icon} ${skill.name}` : skill.name}</span>
                       <span className="text-[9px] opacity-40 font-black">{skill.percentage}%</span>
                    </div>
                    <div className="h-px bg-white/5 w-full relative overflow-hidden flex items-center">

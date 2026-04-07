@@ -36,7 +36,7 @@ export const Theme9 = ({ identity, skills, projects }: any) => {
                  {skills.map((skill: any, i: number) => (
                    <div key={i} className="group/skill">
                       <div className="flex justify-between text-xs font-bold mb-2">
-                         <span>{skill.name}</span>
+                         <span>{skill.icon ? `${skill.icon} ${skill.name}` : skill.name}</span>
                          <span className="text-[#818CF8]">{skill.percentage}%</span>
                       </div>
                       <div className="h-2 bg-white/40 rounded-full w-full overflow-hidden p-[2px]">

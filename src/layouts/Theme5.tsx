@@ -51,7 +51,7 @@ export const Theme5 = ({ identity, skills, projects, experiences, services, test
            {skills.map((skill: any, i: number) => (
              <div key={i} className="bg-white/80 p-8 rounded-[2rem] shadow-[0_10px_25px_rgba(0,0,0,0.01)] border border-[#FB7185]/5 flex flex-col items-center group hover:border-[#FB7185]/30 transition-all">
                 <span className="text-[#FB7185] font-black text-2xl mb-2 group-hover:scale-110 transition-transform">{skill.percentage}%</span>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-black opacity-40 text-[#111827]">{skill.name}</span>
+                <span className="text-[10px] uppercase tracking-[0.2em] font-black opacity-40 text-[#111827]">{skill.icon ? `${skill.icon} ${skill.name}` : skill.name}</span>
              </div>
            ))}
         </div>

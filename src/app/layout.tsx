@@ -19,13 +19,29 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-export const metadata: Metadata = {
-  title: "Dynamic Portfolio Engine",
-  description: "A headless CMS portfolio powered by Google Sheets and 10 dynamic themes.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await getPortfolioData();
+  const { identity } = data;
+
+  return {
+    title: `${identity.user_name} - Portfolio`,
+    description: identity.bio || 'Dynamic portfolio powered by Google Sheets',
+    openGraph: {
+      title: `${identity.user_name} - Portfolio`,
+      description: identity.bio || 'Dynamic portfolio powered by Google Sheets',
+      images: identity.profile_img_url ? [{ url: identity.profile_img_url }] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${identity.user_name} - Portfolio`,
+      description: identity.bio || 'Dynamic portfolio powered by Google Sheets',
+      images: identity.profile_img_url ? [identity.profile_img_url] : [],
+    },
+  };
+}
 
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function RootLayout({
   children,

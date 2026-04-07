@@ -8,6 +8,7 @@ export interface ConfigData {
 export interface IdentityData {
   user_name: string;
   bio: string;
+  about?: string;
   email: string;
   whatsapp_url?: string;
   profile_img_url: string;
@@ -19,6 +20,7 @@ export interface IdentityData {
 export interface Skill {
   name: string;
   percentage: number;
+  icon?: string;
 }
 
 export interface Project {
@@ -40,6 +42,13 @@ export interface Service {
   icon?: string;
 }
 
+export interface BlogPost {
+  title: string;
+  content: string;
+  date: string;
+  excerpt?: string;
+}
+
 export interface Testimonial {
   name: string;
   role: string;
@@ -54,6 +63,7 @@ export interface PortfolioData {
   experiences: Experience[];
   services: Service[];
   testimonials: Testimonial[];
+  blogPosts: BlogPost[];
   isPremium: boolean;
   sheetId: string;
 }
@@ -64,10 +74,9 @@ const SHEET_ID = process.env.NEXT_PUBLIC_SHEET_ID || 'YOUR_SHEET_ID_HERE';
 
 // Fetch data from any Google Sheet by ID
 async function fetchSheetData(sheetId: string) {
-  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&t=${Date.now()}`;
+  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
   const response = await fetch(url, { 
-    cache: 'no-store',
-    next: { revalidate: 0 } 
+    next: { revalidate: 60 } 
   }); 
   const text = await response.text();
   
@@ -91,7 +100,8 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
       sheetId: finalSheetId || '',
       experiences: [],
       services: [],
-      testimonials: []
+      testimonials: [],
+      blogPosts: []
     };
   }
 
@@ -102,6 +112,7 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
     const identity = { 
       user_name: 'Your Name', 
       bio: '', 
+      about: '',
       email: '', 
       whatsapp_url: '',
       profile_img_url: '', 
@@ -114,6 +125,7 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
     const experiences = [] as any[];
     const services = [] as any[];
     const testimonials = [] as any[];
+    const blogPosts = [] as any[];
 
     // Parse the single flattened list
     // Row format: [Section, Key, Value 1, Value 2]
@@ -142,6 +154,7 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
       }
       else if (isIdentity) {
         if (k.includes('name')) identity.user_name = String(val1);
+        if (k.includes('about')) identity.about = String(val1);
         if (k.includes('bio')) identity.bio = String(val1);
         if (k.includes('email')) identity.email = String(val1);
         if (k.includes('img') || k.includes('image') || k.includes('profile')) identity.profile_img_url = String(val1 || '');
@@ -159,7 +172,7 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
               const cleanPhone = valStr.replace(/\D/g, '');
               identity.hire_me_url = `https://wa.me/${cleanPhone}`;
            } else if (valStr.includes('wa.me')) {
-              identity.hire_me_url = valStr.startsWith('http') ? valStr : `https://${valStr}`;
+              identity.whatsapp_url = valStr.startsWith('http') ? valStr : `https://${valStr}`;
            }
         }
         if (k.includes('whatsapp') || k.includes('phone')) {
@@ -172,7 +185,7 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
         if (k && val1) identity.social_links.push({ platform: k, url: String(val1) });
       }
       else if (isSkill) {
-        if (k && val1) skills.push({ name: k, percentage: Number(val1) || 0 });
+        if (k && val1) skills.push({ name: k, percentage: Number(val1) || 0, icon: String(val2 || '') });
       }
       else if (isProject) {
         if (k && val1) projects.push({ title: k, img: String(val1), link: String(val2 || '#') });
@@ -186,6 +199,14 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
       else if (isTestimonial) {
         if (k && val1) testimonials.push({ name: k, role: String(val1), quote: String(val2 || '') });
       }
+      else if (s.includes('blog') || s.includes('post') || s.includes('news')) {
+        if (k && val1) blogPosts.push({ title: k, content: String(val1), date: String(val2 || new Date().toISOString().split('T')[0]), excerpt: String(val1).substring(0, 150) + '...' });
+      }
+    }
+
+    // Prefer a dedicated about description when available, otherwise fall back to the shorter bio
+    if (identity.about?.trim()) {
+      identity.bio = identity.about;
     }
 
     // Final post-processing for identity
@@ -195,7 +216,7 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
 
     const isPremium = config.license_key === 'PREMIUM_10X_UNLOCK';
 
-    return { config, identity, skills, projects, experiences, services, testimonials, isPremium, sheetId: finalSheetId };
+    return { config, identity, skills, projects, experiences, services, testimonials, blogPosts, isPremium, sheetId: finalSheetId };
   } catch (error) {
     console.error(`Error fetching/parsing sheet ${finalSheetId}:`, error);
     // Return default data gracefully on error
@@ -206,7 +227,8 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
       sheetId: finalSheetId || '',
       experiences: [],
       services: [],
-      testimonials: []
+      testimonials: [],
+      blogPosts: []
     };
   }
 }

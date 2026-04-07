@@ -4,10 +4,11 @@ import { useTheme } from './ThemeProvider';
 
 interface AdminPortalProps {
   currentSheetId: string;
+  currentThemeId: number;
   onClose: () => void;
 }
 
-export const AdminPortal: React.FC<AdminPortalProps> = ({ currentSheetId, onClose }) => {
+export const AdminPortal: React.FC<AdminPortalProps> = ({ currentSheetId, currentThemeId, onClose }) => {
   const [sheetId, setSheetId] = useState('');
   const router = useRouter();
   const { setThemeById } = useTheme();
@@ -65,12 +66,55 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({ currentSheetId, onClos
                   <button 
                     key={i} 
                     onClick={() => setThemeById(i + 1)}
-                    className="flex justify-between items-center text-[8px] font-bold uppercase tracking-widest text-white/40 hover:text-[#00ffff] transition-colors text-left"
+                    className={`flex justify-between items-center text-[8px] font-bold uppercase tracking-widest transition-colors text-left ${
+                      currentThemeId === i + 1 
+                        ? 'text-[#00ffff] bg-[#00ffff]/10 rounded px-2' 
+                        : 'text-white/40 hover:text-[#00ffff]'
+                    }`}
                   >
                     <span>{i + 1}. {name}</span>
+                    {currentThemeId === i + 1 && <span className="text-[10px]">✓</span>}
                   </button>
                 ))}
              </div>
+          </div>
+
+          {/* Share Different Themes Section */}
+          <div className="bg-black/40 border border-white/5 rounded-2xl p-6 text-left space-y-4">
+             <h3 className="text-[9px] uppercase tracking-[0.3em] font-black text-[#00ffff]/60 border-b border-white/5 pb-2">Share Portfolio with Different Themes</h3>
+             <div className="grid grid-cols-1 gap-2 max-h-32 overflow-y-auto">
+                {[
+                  "Neon Genesis", "Violet Storm", "Noir Minimal", "Azure Modern", "Crimson Red Team",
+                  "Matrix Digital", "Executive Pro", "Luxury Gold", "Soft Pastel", "Blue Horizon"
+                ].map((name, i) => {
+                  const themeUrl = currentSheetId && currentSheetId !== 'YOUR_SHEET_ID_HERE' 
+                    ? `${window.location.origin}/${currentSheetId}?theme=${i + 1}`
+                    : `${window.location.origin}?theme=${i + 1}`;
+                  
+                  return (
+                    <button 
+                      key={i} 
+                      onClick={() => {
+                        navigator.clipboard.writeText(themeUrl);
+                        // Simple feedback
+                        const btn = event?.target as HTMLElement;
+                        if (btn) {
+                          const original = btn.textContent;
+                          btn.textContent = 'COPIED!';
+                          setTimeout(() => btn.textContent = original, 1000);
+                        }
+                      }}
+                      className="w-full flex justify-between items-center text-[8px] font-bold uppercase tracking-widest text-white/40 hover:text-[#00ffff] transition-colors text-left bg-black/20 hover:bg-black/40 rounded px-3 py-2"
+                    >
+                      <span>{i + 1}. {name}</span>
+                      <span className="text-[10px]">📋</span>
+                    </button>
+                  );
+                })}
+             </div>
+             <p className="text-[7px] text-white/20 uppercase tracking-widest">
+               Click any theme to copy its unique share link
+             </p>
           </div>
 
           <div className="flex flex-col gap-4">

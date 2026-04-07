@@ -1,8 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { SocialIcon } from '@/components/SocialIcon';
+import { ContactForm } from '@/components/ContactForm';
+import { TestimonialsSlider } from '@/components/TestimonialsSlider';
+import { PDFExport } from '@/components/PDFExport';
 
-export const Theme1 = ({ identity, skills, projects, experiences, services, testimonials }: any) => {
+export const Theme1 = ({ identity, skills, projects, experiences, services, testimonials, blogPosts }: any) => {
   return (
     <div className="min-h-screen bg-black text-white p-4 md:p-10 font-mono relative overflow-hidden">
       {/* Grid Overlay */}
@@ -34,6 +37,15 @@ export const Theme1 = ({ identity, skills, projects, experiences, services, test
             <a href={identity.hire_me_url} target="_blank" rel="noopener noreferrer" className="block w-full py-3 border border-[var(--accent-color)] text-[var(--accent-color)] hover:bg-[var(--accent-color)] hover:text-black transition-all font-bold uppercase tracking-[0.2em] text-xs">
               {identity.hire_me_text || 'INITIALIZE_CONTACT'}
             </a>
+          </div>
+
+          {/* Contact Form */}
+          <div className="mt-8">
+            <h3 className="text-[var(--accent-color)] mb-4 text-sm font-bold uppercase tracking-widest">Get In Touch</h3>
+            <ContactForm email={identity.email} />
+            <div className="mt-4">
+              <PDFExport identity={identity} skills={skills} projects={projects} experiences={experiences} />
+            </div>
           </div>
         </div>
 
@@ -67,7 +79,7 @@ export const Theme1 = ({ identity, skills, projects, experiences, services, test
                   {skills.map((skill: any, i: number) => (
                     <div key={i}>
                       <div className="flex justify-between text-[10px] mb-1 uppercase tracking-widest font-bold">
-                        <span>{skill.name}</span>
+                        <span>{skill.icon ? `${skill.icon} ${skill.name}` : skill.name}</span>
                         <span className="text-[var(--accent-color)]">{skill.percentage}%</span>
                       </div>
                       <div className="h-1 bg-white/5 w-full flex items-center">
@@ -118,15 +130,26 @@ export const Theme1 = ({ identity, skills, projects, experiences, services, test
 
           {/* Testimonials Section */}
           {testimonials && testimonials.length > 0 && (
-            <div className="border-2 border-[var(--card-border)] p-6 bg-black/80 italic">
+            <div className="border-2 border-[var(--card-border)] p-6 bg-black/80">
                <h3 className="text-[var(--accent-color)] mb-6 text-sm flex items-center gap-2">
                  <span className="w-2 h-2 bg-[var(--accent-color)]"></span> CLIENT_FEEDBACK
                </h3>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 {testimonials.map((t: any, i: number) => (
-                   <div key={i} className="border border-[var(--card-border)] p-4 relative">
-                      <p className="text-[10px] mb-4 opacity-70">"{t.quote}"</p>
-                      <div className="text-[var(--accent-color)] font-bold uppercase text-[9px]">{t.name} // {t.role}</div>
+               <TestimonialsSlider testimonials={testimonials} />
+            </div>
+          )}
+
+          {/* Blog Section */}
+          {blogPosts && blogPosts.length > 0 && (
+            <div className="border-2 border-[var(--card-border)] p-6 bg-black/80">
+               <h3 className="text-[var(--accent-color)] mb-6 text-sm flex items-center gap-2">
+                 <span className="w-2 h-2 bg-[var(--accent-color)]"></span> LATEST_POSTS
+               </h3>
+               <div className="space-y-4">
+                 {blogPosts.slice(0, 3).map((post: any, i: number) => (
+                   <div key={i} className="border border-[var(--card-border)] p-4 hover:bg-[var(--accent-color)]/5 transition-all">
+                      <h4 className="text-[var(--accent-color)] font-bold text-sm mb-2">{post.title}</h4>
+                      <p className="text-xs opacity-70 mb-2">{post.excerpt}</p>
+                      <div className="text-[9px] opacity-50 uppercase">{post.date}</div>
                    </div>
                  ))}
                </div>

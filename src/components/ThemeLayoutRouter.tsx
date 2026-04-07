@@ -25,12 +25,13 @@ interface Props {
   experiences: any[];
   services: any[];
   testimonials: any[];
+  blogPosts: any[];
   isPremium: boolean;
   sheetId: string;
 }
 
 export const ThemeLayoutRouter: React.FC<Props> = ({ 
-  config, identity, skills, projects, experiences, services, testimonials, isPremium, sheetId 
+  config, identity, skills, projects, experiences, services, testimonials, blogPosts, isPremium, sheetId 
 }) => {
   const { activeTheme, setThemeById } = useTheme();
 
@@ -62,17 +63,17 @@ export const ThemeLayoutRouter: React.FC<Props> = ({
   
   const renderLayout = () => {
     switch(activeTheme.id) {
-      case 1: return <Theme1 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} />;
-      case 2: return <Theme2 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} />;
-      case 3: return <Theme3 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} />;
-      case 4: return <Theme4 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} />;
-      case 5: return <Theme5 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} />;
-      case 6: return <Theme6 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} />;
-      case 7: return <Theme7 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} />;
-      case 8: return <Theme8 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} />;
-      case 9: return <Theme9 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} />;
-      case 10: return <Theme10 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} />;
-      default: return <Theme1 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} />;
+      case 1: return <Theme1 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
+      case 2: return <Theme2 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
+      case 3: return <Theme3 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
+      case 4: return <Theme4 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
+      case 5: return <Theme5 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
+      case 6: return <Theme6 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
+      case 7: return <Theme7 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
+      case 8: return <Theme8 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
+      case 9: return <Theme9 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
+      case 10: return <Theme10 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
+      default: return <Theme1 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
     }
   };
 
@@ -88,7 +89,7 @@ export const ThemeLayoutRouter: React.FC<Props> = ({
         </p>
       </footer>
       <FloatingActions whatsappUrl={identity.whatsapp_url} sheetId={sheetId} />
-      {showPortal && <AdminPortal currentSheetId={sheetId} onClose={() => setShowPortal(false)} />}
+      {showPortal && <AdminPortal currentSheetId={sheetId} currentThemeId={activeTheme.id} onClose={() => setShowPortal(false)} />}
     </div>
   );
 };

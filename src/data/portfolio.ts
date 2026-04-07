@@ -12,6 +12,7 @@ export const localPortfolioData = {
   identity: {
     user_name: 'Your Name',
     bio: 'Full-Stack Developer | Security Enthusiast | UI Designer',
+    about: 'I build polished, high-performance apps for modern teams, blending design, development, and deployment into one seamless delivery.',
     email: 'hello@example.com', // Added for the Hire Me button
     profile_img_url: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=250&auto=format&fit=crop',
     hire_me_text: 'Hire Me',
@@ -23,10 +24,13 @@ export const localPortfolioData = {
     ],
   },
   skills: [
-    { name: 'React / Next.js', percentage: 90 },
-    { name: 'TypeScript', percentage: 85 },
-    { name: 'Tailwind CSS', percentage: 95 },
-    { name: 'Node.js', percentage: 70 },
+    { name: 'React', percentage: 90, icon: '⚛️' },
+    { name: 'TypeScript', percentage: 85, icon: '🔷' },
+    { name: 'Node.js', percentage: 80, icon: '🟢' },
+    { name: 'Next.js', percentage: 85, icon: '⚫️' },
+    { name: 'Tailwind CSS', percentage: 95, icon: '🌬️' },
+    { name: 'Git', percentage: 80, icon: '🐙' },
+    { name: 'Figma', percentage: 75, icon: '🎨' },
   ],
   projects: [
     {

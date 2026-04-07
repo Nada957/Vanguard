@@ -4,6 +4,35 @@ Welcome to your dynamic Portfolio Engine! Your entire website is controlled via 
 
 ---
 
+## ✨ Multiple Portfolios & Theme Sharing
+
+### Creating Different Portfolios for Different Audiences
+
+1. **Create Multiple Google Sheets**: Each portfolio gets its own spreadsheet
+2. **Set Different Themes**: Use `Config > active_theme` to set the default theme (1-10)
+3. **Customize Content**: Tailor the content for each specific audience
+
+**Example Setup:**
+- **Creative Portfolio**: Sheet ID `1abc123...` with Theme 1 (Neon Genesis)
+- **Corporate Portfolio**: Sheet ID `2def456...` with Theme 5 (Crimson Red Team)
+
+### Sharing the Same Portfolio with Different Themes
+
+Add `?theme=X` to any portfolio URL to override the theme:
+
+```
+your-site.com/SHEET_ID?theme=1  ← Neon Genesis
+your-site.com/SHEET_ID?theme=5  ← Crimson Red Team  
+your-site.com/SHEET_ID?theme=8  ← Luxury Gold
+```
+
+**Quick Sharing Tool:**
+- Open any portfolio and type `C-I-C-A-D-A` to open the admin portal
+- Click any theme in "Share Portfolio with Different Themes" 
+- The themed URL is automatically copied to your clipboard!
+
+---
+
 ## 📝 Step 1: Set Up Your Google Sheet
 
 1. **Create your Spreadsheet:** Create a new Google Sheet (or duplicate the seller's template).
@@ -38,14 +67,24 @@ Here is the exact layout you should use:
 | **Config** | spotlight_enabled | TRUE | |
 | **Config** | license_key | PREMIUM_10X_UNLOCK | |
 | **Identity** | user_name | Your Name | |
-| **Identity** | bio | Your Bio Here | |
+| **Identity** | bio | Your short tagline | |
+| **Identity** | about | A longer story about what you build and why | |
 | **Identity** | email | your@email.com | |
 | **Identity** | profile_img_url | https://...image.jpg | |
 | **Social** | GitHub | https://github.com/yourname | |
 | **Social** | LinkedIn | https://linkedin.com/in/yourname | |
-| **Skill** | React | 90 | |
-| **Skill** | Node.js | 80 | |
+| **Skill** | React | 90 | ⚛️ |
+| **Skill** | TypeScript | 85 | 🔷 |
+| **Skill** | Node.js | 80 | 🟢 |
+| **Skill** | Next.js | 85 | ⚫️ |
+| **Skill** | Tailwind CSS | 95 | 🌬️ |
+| **Skill** | Git | 80 | 🐙 |
+| **Skill** | Figma | 75 | 🎨 |
 | **Project** | Cool App | https://...image.jpg | https://...link.com |
+| **Experience** | Senior Developer | Tech Corp | 2020-Present | Led team of 5 developers |
+| **Service** | Web Development | Custom websites and apps | 💻 |
+| **Testimonial** | John Doe | CEO, Company | "Amazing work!" | |
+| **Blog** | My First Post | This is the content of my blog post | 2024-01-01 | |
 
 **Note**: *You can simply go to `File > Import > Upload` in Google Sheets and upload the `google-sheet-templates/PortfolioData.csv` file to do all this instantly!*
 

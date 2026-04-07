@@ -87,7 +87,7 @@ export const Theme8 = ({ identity, skills, projects, experiences, services, test
            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--card-border)] p-px shadow-2xl">
               {skills.map((skill: any, i: number) => (
                 <div key={i} className="bg-black/90 p-10 flex flex-col gap-4 border border-[var(--card-border)] hover:bg-[#FDE68A]/5 transition-all group/skill">
-                   <h3 className="text-[10px] uppercase font-black tracking-widest opacity-40 italic group-hover/skill:opacity-100 transition-opacity">{skill.name}</h3>
+                   <h3 className="text-[10px] uppercase font-black tracking-widest opacity-40 italic group-hover/skill:opacity-100 transition-opacity">{skill.icon ? `${skill.icon} ${skill.name}` : skill.name}</h3>
                    <div className="flex items-baseline gap-4">
                       <span className="text-6xl font-black text-white drop-shadow-[0_0_15px_var(--glow-color)]">{skill.percentage}%</span>
                    </div>
@@ -130,11 +130,6 @@ export const Theme8 = ({ identity, skills, projects, experiences, services, test
            )}
 
         </div>
-
-      </div>
-    </div>
-  );
-};
 
       </div>
     </div>

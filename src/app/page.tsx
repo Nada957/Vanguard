@@ -4,12 +4,24 @@ import { ThemeLayoutRouter } from '@/components/ThemeLayoutRouter';
 import { Spotlight } from '@/components/BentoComponents';
 
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 60;
 
-export default async function Page() {
+export default async function Page({ 
+  searchParams 
+}: { 
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }> 
+}) {
+  const search = await searchParams;
+  const themeOverride = search.theme ? parseInt(search.theme as string) : undefined;
+  
   // Fetch life data from the default Google Sheet
   const data = await getPortfolioData();
-  const { config, identity, skills, projects } = data;
+  const { config, identity, skills, projects, experiences, services, testimonials, blogPosts } = data;
+
+  // Override theme if specified in URL
+  if (themeOverride && themeOverride >= 1 && themeOverride <= 10) {
+    config.active_theme = themeOverride;
+  }
 
   return (
     <Spotlight>
@@ -19,6 +31,10 @@ export default async function Page() {
              identity={identity}
              skills={skills}
              projects={projects}
+             experiences={experiences}
+             services={services}
+             testimonials={testimonials}
+             blogPosts={blogPosts}
              isPremium={data.isPremium}
              sheetId={data.sheetId}
           />
