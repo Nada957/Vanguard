@@ -43,12 +43,8 @@ export const Theme1 = ({ identity, skills, projects, experiences, services, test
           <div className="mt-8">
             <h3 className="text-[var(--accent-color)] mb-4 text-sm font-bold uppercase tracking-widest">Get In Touch</h3>
             <ContactForm 
-              email={config.recipient_email || identity.email} 
-              emailjsConfig={{
-                serviceId: config.emailjs_service_id,
-                templateId: config.emailjs_template_id,
-                publicKey: config.emailjs_public_key,
-              }}
+              email={identity.email} 
+              contactEmail={config.contact_email}
             />
             <div className="mt-4">
               <PDFExport identity={identity} skills={skills} projects={projects} experiences={experiences} />

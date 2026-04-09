@@ -66,10 +66,7 @@ Here is the exact layout you should use:
 | **Config** | accent_color | #FF0000 | |
 | **Config** | spotlight_enabled | TRUE | |
 | **Config** | license_key | PREMIUM_10X_UNLOCK | |
-| **Config** | emailjs_service_id | your_service_id | |
-| **Config** | emailjs_template_id | your_template_id | |
-| **Config** | emailjs_public_key | your_public_key | |
-| **Config** | recipient_email | your@email.com | |
+| **Config** | contact_email | your@email.com | |
 | **Config** | recipient_email | your@email.com | |
 | **Identity** | user_name | Your Name | |
 | **Identity** | bio | Your short tagline | |
@@ -107,51 +104,30 @@ If you purchased the **Premium Version**, you have access to a suite of 10 diffe
 
 ---
 
-## 📧 Setting Up Direct Email Sending (EmailJS)
+## 📧 Setting Up Direct Email Sending (Simplified)
 
-By default, the contact form uses `mailto:` links which open the visitor's email client. To send emails directly from your website without opening email clients:
+**Good news!** The contact form now works with just ONE configuration field. Simply add your email address to enable direct email sending.
 
-1. **Create an EmailJS Account**: Go to [https://www.emailjs.com/](https://www.emailjs.com/) and sign up for a free account.
+### Quick Setup:
+1. **Add one row to your Google Sheet**:
+   ```
+   | Config | contact_email | your-main@email.com | |
+   ```
 
-2. **Set Up Email Service**:
-   - In your EmailJS dashboard, go to "Email Services" and add a new service (Gmail, Outlook, etc.)
-   - Follow the setup instructions to connect your email account
+2. **That's it!** The contact form will now send emails directly to your specified email address.
 
-3. **Create an Email Template**:
-   - Go to "Email Templates" and create a new template
-   - Set the "To Email" field to: `{{to_email}}`
-   - Set the "Reply To" field to: `{{reply_to}}`
-   - Use this template structure:
-     ```
-     Subject: New Contact Form Message from {{from_name}}
+### How it works:
+- When `contact_email` is set, the form uses EmailJS to send emails directly
+- Visitors can fill out the form and messages are sent instantly (no email client opens)
+- You receive emails at the address you specified
+- If `contact_email` is not set, it falls back to the traditional mailto method
 
-     You have received a new message from your portfolio website:
+### Advanced Configuration (Optional):
+If you want to use your own EmailJS account instead of the default configuration, create a `.env.local` file and add:
+```
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
 
-     Name: {{from_name}}
-     Email: {{from_email}}
-
-     Message:
-     {{message}}
-
-     ---
-     This message was sent from your portfolio contact form.
-     ```
-
-4. **Get Your IDs**:
-   - Service ID: Found in Email Services
-   - Template ID: Found in Email Templates  
-   - Public Key: Found in Account settings
-
-5. **Configure Your Google Sheet**:
-   - Add these rows to your Config section:
-     ```
-     | Config | emailjs_service_id | YOUR_SERVICE_ID | |
-     | Config | emailjs_template_id | YOUR_TEMPLATE_ID | |
-     | Config | emailjs_public_key | YOUR_PUBLIC_KEY | |
-     | Config | recipient_email | your@email.com | |
-     ```
-   - The `recipient_email` is the email address where contact form submissions will be sent. This can be different from your identity email.
-
-6. **Test It**: Submit the contact form on your website - emails should now send directly!
-
-*Note: Free EmailJS accounts have a monthly sending limit. Upgrade for higher limits if needed.*
+*Note: The system uses optimized EmailJS configuration for reliability and performance.*

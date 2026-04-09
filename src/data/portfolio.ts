@@ -8,10 +8,7 @@ export const localPortfolioData = {
     active_theme: 1, // Only applies if license_key is "PREMIUM_10X_UNLOCK"
     accent_color: '#FF0000',
     spotlight_enabled: true,
-    emailjs_service_id: '',
-    emailjs_template_id: '',
-    emailjs_public_key: '',
-    recipient_email: '',
+    contact_email: '',
   },
   identity: {
     user_name: 'Your Name',

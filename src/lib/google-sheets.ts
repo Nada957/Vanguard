@@ -3,10 +3,7 @@ export interface ConfigData {
   active_theme: number;
   accent_color: string;
   spotlight_enabled: boolean;
-  emailjs_service_id?: string;
-  emailjs_template_id?: string;
-  emailjs_public_key?: string;
-  recipient_email?: string;
+  contact_email?: string;
 }
 
 export interface IdentityData {
@@ -112,7 +109,7 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
   try {
     const rows = await fetchSheetData(finalSheetId);
 
-    const config = { active_theme: 1, accent_color: '#00ffff', spotlight_enabled: true, license_key: '', emailjs_service_id: '', emailjs_template_id: '', emailjs_public_key: '', recipient_email: '' };
+    const config = { active_theme: 1, accent_color: '#00ffff', spotlight_enabled: true, license_key: '', contact_email: '' };
     const identity = { 
       user_name: 'Your Name', 
       bio: '', 
@@ -155,10 +152,7 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
         if (k.includes('color')) config.accent_color = String(val1);
         if (k.includes('spotlight')) config.spotlight_enabled = val1 === true || val1 === 'TRUE' || val1 === 'true' || val1 === 'True';
         if (k.includes('license')) config.license_key = String(val1 || '').trim().toUpperCase();
-        if (k.includes('emailjs_service')) config.emailjs_service_id = String(val1 || '');
-        if (k.includes('emailjs_template')) config.emailjs_template_id = String(val1 || '');
-        if (k.includes('emailjs_public')) config.emailjs_public_key = String(val1 || '');
-        if (k.includes('recipient') && k.includes('email')) config.recipient_email = String(val1 || '');
+        if (k.includes('contact') && k.includes('email')) config.contact_email = String(val1 || '');
       }
       else if (isIdentity) {
         if (k.includes('name')) identity.user_name = String(val1);

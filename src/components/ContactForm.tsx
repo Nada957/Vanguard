@@ -5,14 +5,10 @@ import emailjs from '@emailjs/browser';
 
 interface ContactFormProps {
   email: string;
-  emailjsConfig?: {
-    serviceId: string;
-    templateId: string;
-    publicKey: string;
-  };
+  contactEmail?: string;
 }
 
-export const ContactForm: React.FC<ContactFormProps> = ({ email, emailjsConfig }) => {
+export const ContactForm: React.FC<ContactFormProps> = ({ email, contactEmail }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,21 +22,22 @@ export const ContactForm: React.FC<ContactFormProps> = ({ email, emailjsConfig }
     setIsSubmitting(true);
 
     try {
-      if (emailjsConfig && emailjsConfig.serviceId && emailjsConfig.templateId && emailjsConfig.publicKey) {
-        // Use EmailJS for direct sending
+      // If contactEmail is set, use EmailJS with default credentials
+      if (contactEmail) {
         const templateParams = {
           from_name: formData.name,
           from_email: formData.email,
-          to_email: email,
+          to_email: contactEmail,
           message: formData.message,
           reply_to: formData.email,
         };
 
+        // Default EmailJS credentials from environment variables
         await emailjs.send(
-          emailjsConfig.serviceId,
-          emailjsConfig.templateId,
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'default_service_id',
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'default_template_id',
           templateParams,
-          emailjsConfig.publicKey
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'default_public_key'
         );
 
         setSubmitted(true);
