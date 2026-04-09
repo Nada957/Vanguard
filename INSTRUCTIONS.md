@@ -66,6 +66,11 @@ Here is the exact layout you should use:
 | **Config** | accent_color | #FF0000 | |
 | **Config** | spotlight_enabled | TRUE | |
 | **Config** | license_key | PREMIUM_10X_UNLOCK | |
+| **Config** | emailjs_service_id | your_service_id | |
+| **Config** | emailjs_template_id | your_template_id | |
+| **Config** | emailjs_public_key | your_public_key | |
+| **Config** | recipient_email | your@email.com | |
+| **Config** | recipient_email | your@email.com | |
 | **Identity** | user_name | Your Name | |
 | **Identity** | bio | Your short tagline | |
 | **Identity** | about | A longer story about what you build and why | |
@@ -99,3 +104,54 @@ If you purchased the **Premium Version**, you have access to a suite of 10 diffe
 4. Refresh your website and watch the themes unlock!
 
 *Powered by Cicada Academy*
+
+---
+
+## 📧 Setting Up Direct Email Sending (EmailJS)
+
+By default, the contact form uses `mailto:` links which open the visitor's email client. To send emails directly from your website without opening email clients:
+
+1. **Create an EmailJS Account**: Go to [https://www.emailjs.com/](https://www.emailjs.com/) and sign up for a free account.
+
+2. **Set Up Email Service**:
+   - In your EmailJS dashboard, go to "Email Services" and add a new service (Gmail, Outlook, etc.)
+   - Follow the setup instructions to connect your email account
+
+3. **Create an Email Template**:
+   - Go to "Email Templates" and create a new template
+   - Set the "To Email" field to: `{{to_email}}`
+   - Set the "Reply To" field to: `{{reply_to}}`
+   - Use this template structure:
+     ```
+     Subject: New Contact Form Message from {{from_name}}
+
+     You have received a new message from your portfolio website:
+
+     Name: {{from_name}}
+     Email: {{from_email}}
+
+     Message:
+     {{message}}
+
+     ---
+     This message was sent from your portfolio contact form.
+     ```
+
+4. **Get Your IDs**:
+   - Service ID: Found in Email Services
+   - Template ID: Found in Email Templates  
+   - Public Key: Found in Account settings
+
+5. **Configure Your Google Sheet**:
+   - Add these rows to your Config section:
+     ```
+     | Config | emailjs_service_id | YOUR_SERVICE_ID | |
+     | Config | emailjs_template_id | YOUR_TEMPLATE_ID | |
+     | Config | emailjs_public_key | YOUR_PUBLIC_KEY | |
+     | Config | recipient_email | your@email.com | |
+     ```
+   - The `recipient_email` is the email address where contact form submissions will be sent. This can be different from your identity email.
+
+6. **Test It**: Submit the contact form on your website - emails should now send directly!
+
+*Note: Free EmailJS accounts have a monthly sending limit. Upgrade for higher limits if needed.*

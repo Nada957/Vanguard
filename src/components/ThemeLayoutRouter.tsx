@@ -78,7 +78,7 @@ export const ThemeLayoutRouter: React.FC<Props> = ({
   
   const renderLayout = () => {
     switch(activeTheme.id) {
-      case 1: return <Theme1 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
+      case 1: return <Theme1 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} config={config} />;
       case 2: return <Theme2 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
       case 3: return <Theme3 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;
       case 4: return <Theme4 identity={identity} skills={skills} projects={projects} experiences={experiences} services={services} testimonials={testimonials} blogPosts={blogPosts} />;

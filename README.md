@@ -9,7 +9,7 @@ Your entire website is controlled via a simple **Google Spreadsheet**. No code r
 - **Dynamic Content Management**: Edit your portfolio directly in Google Sheets
 - **10 Beautiful Themes**: Choose from various theme layouts
 - **SEO Optimized**: Dynamic meta tags for better search visibility
-- **Contact Form**: Built-in mailto contact form
+- **Contact Form**: Built-in contact form with direct email sending via EmailJS (configurable recipient email)
 - **Testimonials Slider**: Interactive carousel showcasing client feedback
 - **Blog Section**: Share your thoughts and insights
 - **PDF Export**: Generate professional resume downloads

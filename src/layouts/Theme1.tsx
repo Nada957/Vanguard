@@ -5,7 +5,7 @@ import { ContactForm } from '@/components/ContactForm';
 import { TestimonialsSlider } from '@/components/TestimonialsSlider';
 import { PDFExport } from '@/components/PDFExport';
 
-export const Theme1 = ({ identity, skills, projects, experiences, services, testimonials, blogPosts }: any) => {
+export const Theme1 = ({ identity, skills, projects, experiences, services, testimonials, blogPosts, config }: any) => {
   return (
     <div className="min-h-screen bg-black text-white p-3 md:p-6 lg:p-10 font-mono relative overflow-hidden">
       {/* Grid Overlay */}
@@ -42,7 +42,14 @@ export const Theme1 = ({ identity, skills, projects, experiences, services, test
           {/* Contact Form */}
           <div className="mt-8">
             <h3 className="text-[var(--accent-color)] mb-4 text-sm font-bold uppercase tracking-widest">Get In Touch</h3>
-            <ContactForm email={identity.email} />
+            <ContactForm 
+              email={config.recipient_email || identity.email} 
+              emailjsConfig={{
+                serviceId: config.emailjs_service_id,
+                templateId: config.emailjs_template_id,
+                publicKey: config.emailjs_public_key,
+              }}
+            />
             <div className="mt-4">
               <PDFExport identity={identity} skills={skills} projects={projects} experiences={experiences} />
             </div>

@@ -1,12 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 interface ContactFormProps {
   email: string;
+  emailjsConfig?: {
+    serviceId: string;
+    templateId: string;
+    publicKey: string;
+  };
 }
 
-export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
+export const ContactForm: React.FC<ContactFormProps> = ({ email, emailjsConfig }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,15 +25,46 @@ export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simple mailto fallback - in production, you'd use a service like Formspree
-    const subject = `Portfolio Contact from ${formData.name}`;
-    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
-    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      if (emailjsConfig && emailjsConfig.serviceId && emailjsConfig.templateId && emailjsConfig.publicKey) {
+        // Use EmailJS for direct sending
+        const templateParams = {
+          from_name: formData.name,
+          from_email: formData.email,
+          to_email: email,
+          message: formData.message,
+          reply_to: formData.email,
+        };
 
-    window.location.href = mailtoLink;
+        await emailjs.send(
+          emailjsConfig.serviceId,
+          emailjsConfig.templateId,
+          templateParams,
+          emailjsConfig.publicKey
+        );
+
+        setSubmitted(true);
+      } else {
+        // Fallback to mailto
+        const subject = `Portfolio Contact from ${formData.name}`;
+        const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+        const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.location.href = mailtoLink;
+        setSubmitted(true);
+      }
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      // Fallback to mailto on error
+      const subject = `Portfolio Contact from ${formData.name}`;
+      const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+      const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoLink;
+      setSubmitted(true);
+    }
 
     setIsSubmitting(false);
-    setSubmitted(true);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -40,7 +77,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
   if (submitted) {
     return (
       <div className="text-center py-8">
-        <p className="text-green-400 font-bold">Message sent! I'll get back to you soon.</p>
+        <p className="text-green-400 font-bold">Message sent successfully! I'll get back to you soon.</p>
       </div>
     );
   }
