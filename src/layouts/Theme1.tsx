@@ -39,13 +39,7 @@ export const Theme1 = ({ identity, skills, projects, experiences, services, test
             </a>
           </div>
 
-          {/* Contact Form Block */}
-          <div className="mt-8 w-full">
-            <h3 className="text-[var(--accent-color)] mb-4 text-sm font-bold uppercase tracking-widest text-center">Get In Touch</h3>
-            <ContactForm 
-              email={config?.contact_email || identity.email} 
-            />
-          </div>
+
         </div>
 
         {/* Dynamic Experience/Services/Skills Blocks */}
