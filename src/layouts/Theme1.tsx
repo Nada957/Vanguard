@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { SocialIcon } from '@/components/SocialIcon';
 import { ContactForm } from '@/components/ContactForm';
 import { TestimonialsSlider } from '@/components/TestimonialsSlider';
-import { PDFExport } from '@/components/PDFExport';
+
 
 export const Theme1 = ({ identity, skills, projects, experiences, services, testimonials, blogPosts, config }: any) => {
   return (
@@ -39,16 +39,12 @@ export const Theme1 = ({ identity, skills, projects, experiences, services, test
             </a>
           </div>
 
-          {/* Contact Form */}
-          <div className="mt-8">
-            <h3 className="text-[var(--accent-color)] mb-4 text-sm font-bold uppercase tracking-widest">Get In Touch</h3>
+          {/* Contact Form Block */}
+          <div className="mt-8 w-full">
+            <h3 className="text-[var(--accent-color)] mb-4 text-sm font-bold uppercase tracking-widest text-center">Get In Touch</h3>
             <ContactForm 
-              email={identity.email} 
-              contactEmail={config.contact_email}
+              email={config?.contact_email || identity.email} 
             />
-            <div className="mt-4">
-              <PDFExport identity={identity} skills={skills} projects={projects} experiences={experiences} />
-            </div>
           </div>
         </div>
 
@@ -118,7 +114,7 @@ export const Theme1 = ({ identity, skills, projects, experiences, services, test
              </h3>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
                 {projects.map((project: any, i: number) => (
-                  <a key={i} href={project.link} target="_blank" className="block border border-[var(--card-border)] p-2 hover:border-[var(--accent-color)] group transition-all relative overflow-hidden">
+                  <a key={i} href={project.link} target="_blank" rel="noopener noreferrer" className="block border border-[var(--card-border)] p-2 hover:border-[var(--accent-color)] group transition-all relative overflow-hidden">
                     <div className="relative aspect-video w-full grayscale group-hover:grayscale-0 transition-all opacity-40 group-hover:opacity-100">
                        {project.img && <Image src={project.img} alt={project.title} fill className="object-cover" />}
                     </div>

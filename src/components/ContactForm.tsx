@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-
+import emailjs from '@emailjs/browser'; // تأكدي من عمل npm install @emailjs/browser
 
 interface ContactFormProps {
   email: string;
@@ -21,17 +21,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
     setIsSubmitting(true);
 
     try {
-      // If contactEmail is set, use EmailJS with default credentials
-      if (contactEmail) {
+      // استخدمنا email التي تأتي من الـ Props بدلاً من contactEmail غير المعرفة
+      if (email) {
         const templateParams = {
           from_name: formData.name,
           from_email: formData.email,
-          to_email: contactEmail,
+          to_email: email, // تم التعديل هنا
           message: formData.message,
           reply_to: formData.email,
         };
 
-        // Default EmailJS credentials from environment variables
         await emailjs.send(
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'default_service_id',
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'default_template_id',
@@ -41,7 +40,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
 
         setSubmitted(true);
       } else {
-        // Fallback to mailto
         const subject = `Portfolio Contact from ${formData.name}`;
         const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
         const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -51,7 +49,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
       }
     } catch (error) {
       console.error('Email sending failed:', error);
-      // Fallback to mailto on error
       const subject = `Portfolio Contact from ${formData.name}`;
       const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
       const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
