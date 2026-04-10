@@ -1,14 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
+
 
 interface ContactFormProps {
   email: string;
-  contactEmail?: string;
 }
 
-export const ContactForm: React.FC<ContactFormProps> = ({ email, contactEmail }) => {
+export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
