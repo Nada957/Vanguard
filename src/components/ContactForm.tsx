@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser'; // Ensure npm install @emailjs/browser
+import emailjs from '@emailjs/browser';
 
 interface ContactFormProps {
   email: string;
@@ -10,6 +10,7 @@ interface ContactFormProps {
 export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,9 +24,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
       if (email) {
         const templateParams = {
           from_name: formData.name,
+          from_email: formData.email || 'anonymous@contact.com',
           to_email: email,
           message: formData.message,
-          // Note: Removed sender email for privacy; EmailJS fallback to mailto
+          reply_to: formData.email || 'anonymous@contact.com',
         };
 
         await emailjs.send(
@@ -38,7 +40,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
         setSubmitted(true);
       } else {
         const subject = `Portfolio Contact from ${formData.name}`;
-        const body = `Name: ${formData.name}\n\nMessage:\n${formData.message}`;
+        const body = `Name: ${formData.name}${formData.email ? `\nEmail: ${formData.email}` : ''}\n\nMessage:\n${formData.message}`;
         const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
         window.location.href = mailtoLink;
@@ -47,7 +49,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
     } catch (error) {
       console.error('Email sending failed:', error);
       const subject = `Portfolio Contact from ${formData.name}`;
-      const body = `Name: ${formData.name}\n\nMessage:\n${formData.message}`;
+      const body = `Name: ${formData.name}${formData.email ? `\nEmail: ${formData.email}` : ''}\n\nMessage:\n${formData.message}`;
       const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
       window.location.href = mailtoLink;
@@ -78,7 +80,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
         <input
           type="text"
           name="name"
-          placeholder="Your Name"
+          placeholder="Your Name *"
           value={formData.name}
           onChange={handleChange}
           required
@@ -86,9 +88,19 @@ export const ContactForm: React.FC<ContactFormProps> = ({ email }) => {
         />
       </div>
       <div>
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email (optional)"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full p-3 bg-black/50 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-white/50 focus:outline-none"
+        />
+      </div>
+      <div>
         <textarea
           name="message"
-          placeholder="Your Message"
+          placeholder="Your Message *"
           value={formData.message}
           onChange={handleChange}
           required
