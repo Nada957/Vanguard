@@ -34,6 +34,17 @@ export const SocialIcon: React.FC<SocialIconProps> = ({ platform, className = "w
     );
   }
 
+  if (p.includes('tryhackme') || p.includes('thm')) {
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+        <circle cx="12" cy="9" r="3"/>
+        <path d="M6 21v-4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/>
+        <text x="12" y="16" fontSize="12" fontWeight="bold" textAnchor="middle" dominantBaseline="middle" fill="currentColor">THM</text>
+      </svg>
+    );
+  }
+
   // Fallback: If no icon, just return the name formatted clearly
   return (
     <span className="text-[10px] uppercase font-black tracking-widest">{platform}</span>

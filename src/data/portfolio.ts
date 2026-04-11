@@ -4,9 +4,9 @@
 export const localPortfolioData = {
   config: {
     // If a user buys premium, give them this code: "PREMIUM_10X_UNLOCK"
-    license_key: '', 
-    active_theme: 1, // Only applies if license_key is "PREMIUM_10X_UNLOCK"
-    accent_color: '#FF0000',
+    license_key: 'PREMIUM_10X_UNLOCK', 
+    active_theme: 7, // Ravens theme
+    accent_color: '#2DD4BF',
     spotlight_enabled: true,
     contact_email: '',
   },
@@ -19,7 +19,8 @@ export const localPortfolioData = {
     hire_me_text: 'Hire Me',
     hire_me_url: 'mailto:hello@example.com',
     social_links: [
-      { platform: 'GitHub', url: 'https://github.com' },
+      { platform: 'GitHub', url: 'https://github.com/yourusername' },
+      { platform: 'TryHackMe', url: 'https://tryhackme.com/p/yourusername' },
       { platform: 'LinkedIn', url: 'https://linkedin.com' },
       { platform: 'WhatsApp', url: 'https://wa.me/1234567890' },
     ],
