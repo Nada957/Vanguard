@@ -1,0 +1,15 @@
+Section	Key	Value 1
+Config	active_theme	7
+Config	accent_color	#2DD4BF
+Config	license_key	PREMIUM_10X_UNLOCK
+Identity	user_name	Your Name
+Identity	bio	Full-Stack Developer
+Identity	email	hello@example.com
+Identity	profile_img_url	https://i.postimg.cc/HxBYyHP9/Cobra.webp
+Identity	hire_me_text	Hire Me
+Social	GitHub	https://github.com/yourusername
+Social	TryHackMe	https://tryhackme.com/p/yourusername
+Skill	React	90	⚛️
+Skill	Next.js	85	⚫️
+
+**Copy ALL above → Paste into sheet A1 → Save → Public VIEW → Use ID in URL**

@@ -1,0 +1,3 @@
+Identity	profile_img_url	https://i.postimg.cc/HxBYyHP9/Cobra.webp
+
+**Copy top line → Paste sheet row → Save → Public VIEW → Test URL/[SHEET-ID]**

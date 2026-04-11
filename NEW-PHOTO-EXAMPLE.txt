@@ -1,0 +1,3 @@
+Identity	profile_img_url	https://your-new-photo-link-here.jpg
+
+**Replace URL → Copy → Paste sheet → Save → Reload page**

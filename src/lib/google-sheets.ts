@@ -132,15 +132,15 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
     // Row format: [Section, Key, Value 1, Value 2]
     for (const row of rows) {
       if (!row || !row[0]) continue;
-      const s = String(row[0] || '').trim().toLowerCase();
-      const k = String(row[1] || '').trim().toLowerCase();
+      const s = String(row[0] || '').trim();
+      const k = String(row[1] || '').trim();
       const val1 = row[2];
       const val2 = row[3];
 
       // Robust Section Detection (Fuzzy Matching)
       const isConfig = s.includes('config');
       const isIdentity = s.includes('identity') || s.includes('identities') || s.includes('info') || s.includes('user');
-      const isSocial = s.includes('social') || s.includes('link') || s.includes('contact');
+      const isSocial = s.toLowerCase().includes('social') || s.toLowerCase().includes('link') || s.toLowerCase().includes('contact');
       const isSkill = s.includes('skill');
       const isProject = s.includes('project');
       const isExperience = s.includes('experience') || s.includes('work') || s.includes('history');
@@ -188,7 +188,7 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
         }
       }
       else if (isSocial) {
-        if (k && val1) identity.social_links.push({ platform: k, url: String(val1) });
+        if (k && val1) identity.social_links.push({ platform: k.charAt(0).toUpperCase() + k.slice(1), url: String(val1) });
       }
       else if (isSkill) {
         if (k && val1) skills.push({ name: k, percentage: Number(val1) || 0, icon: String(val2 || '') });
