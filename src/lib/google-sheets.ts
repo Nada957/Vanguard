@@ -159,7 +159,11 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
         if (k.includes('about')) identity.about = String(val1);
         if (k.includes('bio')) identity.bio = String(val1);
         if (k.includes('email')) identity.email = String(val1);
-        if (k.includes('img') || k.includes('image') || k.includes('profile')) identity.profile_img_url = String(val1 || '');
+        let imgUrl = String(val1 || '');
+        if (imgUrl && !imgUrl.startsWith('http') && !imgUrl.startsWith('data:')) {
+          imgUrl = '/' + imgUrl.trim();
+        }
+        identity.profile_img_url = imgUrl; 
         if (k.includes('hire') || k.includes('button')) {
            const valStr = String(val1 || '').trim();
            // If it's a URL, use a friendly default if text is not provided
@@ -190,7 +194,11 @@ export async function getPortfolioData(sheetIdOverride?: string): Promise<Portfo
         if (k && val1) skills.push({ name: k, percentage: Number(val1) || 0, icon: String(val2 || '') });
       }
       else if (isProject) {
-        if (k && val1) projects.push({ title: k, img: String(val1), link: String(val2 || '#') });
+        let projectImg = String(val1);
+        if (projectImg && !projectImg.startsWith('http') && !projectImg.startsWith('data:')) {
+          projectImg = '/' + projectImg.trim();
+        }
+        projects.push({ title: k, img: projectImg, link: String(val2 || '#') }); 
       }
       else if (isExperience) {
         if (k && val1) experiences.push({ role: k, company: String(val1), period: String(val2 || ''), description: String(row[4] || '') });

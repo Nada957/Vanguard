@@ -25,7 +25,7 @@ Config | license_key | PREMIUM_10X_UNLOCK |  // Unlocks 10 themes
 Identity | user_name | John Doe |
 Identity | bio | Full Stack Developer |
 Identity | email | john@example.com |
-Identity | profile_img_url | https://i.imgur.com/yourphoto.jpg  // Any public image URL (Imgur, GitHub, etc.)
+Identity | profile_img_url | Cobra.webp  // File in public/ OR URL OR base64 data:image/...
 Identity | hire_me_text | Hire Me |
 Identity | hire_me_url | https://calendly.com/john/30min |
 Social | GitHub | https://github.com/yourusername |  // Works with GitHub icon
@@ -59,7 +59,7 @@ Blog | My First Post | Content here... | 2024-01-15
 - `your-site.com` → Default sheet from .env.local
 
 **Admin Portal**:
-- Type `C-I-C-A-D-A` on site → Theme previewer & share links
+- Type `r-a-v-e-n-1` on site → Theme previewer & share links
 
 **Multiple Portfolios**:
 - Different sheet ID per audience (creative/corporate)
