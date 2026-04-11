@@ -66,7 +66,7 @@ export const ThemeLayoutRouter: React.FC<Props> = ({
       const newInput = (inputBuffer + e.key.toLowerCase()).slice(-6);
       setInputBuffer(newInput);
       
-      if (newInput === 'cicada') {
+      if (newInput === 'raven1') {
         setShowPortal(true);
         setShowAdmin(true); // Also reveal switcher for convenience
         setInputBuffer('');
@@ -100,7 +100,7 @@ export const ThemeLayoutRouter: React.FC<Props> = ({
       {showAdmin && isPremium && <ThemeSwitcher />}
       <footer className="w-full py-10 text-center opacity-20 hover:opacity-100 transition-opacity duration-700">
         <p className="text-[9px] uppercase tracking-[0.8em] font-black pointer-events-none select-none">
-          Provided by CICADA ACADEMY
+          Provided by RAVENS ACADEMY
         </p>
       </footer>
       <FloatingActions whatsappUrl={identity.whatsapp_url} sheetId={sheetId} />

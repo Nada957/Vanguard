@@ -15,7 +15,7 @@ export const localPortfolioData = {
     bio: 'Full-Stack Developer | Security Enthusiast | UI Designer',
     about: 'I build polished, high-performance apps for modern teams, blending design, development, and deployment into one seamless delivery.',
     email: 'hello@example.com', // Added for the Hire Me button
-    profile_img_url: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=250&auto=format&fit=crop',
+    profile_img_url: 'https://i.postimg.cc/HxBYyHP9/Cobra.webp',
     hire_me_text: 'Hire Me',
     hire_me_url: 'mailto:hello@example.com',
     social_links: [
