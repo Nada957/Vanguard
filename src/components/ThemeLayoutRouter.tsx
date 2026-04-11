@@ -66,7 +66,7 @@ export const ThemeLayoutRouter: React.FC<Props> = ({
       const newInput = (inputBuffer + e.key.toLowerCase()).slice(-6);
       setInputBuffer(newInput);
       
-      if (newInput === 'raven1') {
+      if (newInput === 'cicada' || newInput === 'raven1') {
         setShowPortal(true);
         setShowAdmin(true); // Also reveal switcher for convenience
         setInputBuffer('');
