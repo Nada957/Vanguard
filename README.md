@@ -6,7 +6,7 @@
 2. **Fill Your Data**: Edit content (name, bio, skills, projects etc.)
 3. **Make Public**: Share → Anyone with link can **view**
 4. **Get Sheet ID**: From URL: `https://docs.google.com/spreadsheets/d/[SHEET-ID]/edit` → copy [SHEET-ID]
-5. **Run Website**: `npm run dev` → open `localhost:3000/[SHEET-ID]`
+5. **Run Website**: `npm run dev` → open `localhost:3000/?id=[SHEET-ID]` (or `localhost:3000` for default)
 
 **Your site instantly reflects sheet changes! No code needed.**
 
@@ -54,9 +54,9 @@ Blog | My First Post | Content here... | 2024-01-15
 ## 🔗 Using the Website
 
 **URLs**:
-- `your-site.com/[SHEET-ID]` → Your portfolio
-- `your-site.com/[SHEET-ID]?theme=5` → Theme 5 override
-- `your-site.com` → Default sheet from .env.local
+- `your-site.com/?id=[SHEET-ID]` → Your portfolio (defaults to ID 1lPij9_815HSen4P5S0IGPRxwtbFuWeFGE7extKR-GK0 if no id)
+- `your-site.com/?id=[SHEET-ID]&theme=5` → Theme 5 override
+- `your-site.com` → Default sheet
 
 **Admin Portal**:
 - Type `r-a-v-e-n-1` on site → Theme previewer & share links
@@ -69,9 +69,8 @@ Blog | My First Post | Content here... | 2024-01-15
 
 ```
 npm install
-echo NEXT_PUBLIC_SHEET_ID=your-sheet-id > .env.local
 npm run dev
-```
+``` (Default ID hardcoded; override with ?id=)
 
 **Production**: Deploy to Vercel/Netlify → Custom domain + multiple sheets.
 

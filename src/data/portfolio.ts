@@ -1,39 +1,38 @@
-// This is the local data fallback. 
-// If you do not want to use Google Sheets, just edit this file!
+// This is the local data fallback with user data integrated.
+// Sheet parsing works identically - copy table to Google Sheets.
+// Theme set to 1 as requested, license unchanged (PREMIUM_10X_UNLOCK).
+// Run: npm run dev → localhost:3000 to test.
 
 export const localPortfolioData = {
   config: {
-    // If a user buys premium, give them this code: "PREMIUM_10X_UNLOCK"
+    // Premium unlocked (do not change as requested)
     license_key: 'PREMIUM_10X_UNLOCK', 
-    active_theme: 7, // Ravens theme
-    accent_color: '#2DD4BF',
-    spotlight_enabled: true,
+    active_theme: 1, // Set to 1 "as it was"
+    accent_color: '#FF0000', // User red accent
+    spotlight_enabled: true, // TRUE
     contact_email: '',
   },
+
   identity: {
-    user_name: 'Your Name',
-    bio: 'Full-Stack Developer | Security Enthusiast | UI Designer',
-    about: 'I build polished, high-performance apps for modern teams, blending design, development, and deployment into one seamless delivery.',
-    email: 'hello@example.com', // Added for the Hire Me button
+    user_name: 'Your name',
+    bio: 'Full-Stack Developer | Security Enthusiast',
+    about: `I am a Full-Stack Web Developer with a deep interest in Cybersecurity. I specialize in building responsive, high-performance web applications using React, Tailwind CSS, and Node.js. Beyond building interfaces, I'm passionate about understanding 'Red Team' tactics to build more secure and resilient digital environments. I love turning complex problems into clean, functional code.`,
+    email: 'hello@example.com',
     profile_img_url: 'https://i.postimg.cc/HxBYyHP9/Cobra.webp',
     hire_me_text: 'Hire Me',
-    hire_me_url: 'mailto:hello@example.com',
+    hire_me_url: 'https://github.com/yourname',
     social_links: [
       { platform: 'GitHub', url: 'https://github.com/yourusername' },
       { platform: 'TryHackMe', url: 'https://tryhackme.com/p/yourusername' },
-      { platform: 'LinkedIn', url: 'https://linkedin.com' },
-      { platform: 'WhatsApp', url: 'https://wa.me/1234567890' },
+      { platform: 'LinkedIn', url: 'https://linkedin.com/in/yourname' },
+      { platform: 'WhatsApp', url: 'https://wa.me/201234567890' }, // From user phone
     ],
   },
   skills: [
-    { name: 'React', percentage: 90, icon: '⚛️' },
+    { name: 'React / Next.js', percentage: 90, icon: '⚛️' },
     { name: 'TypeScript', percentage: 85, icon: '🔷' },
-    { name: 'Node.js', percentage: 80, icon: '🟢' },
-    { name: 'Next.js', percentage: 85, icon: '⚫️' },
     { name: 'Tailwind CSS', percentage: 95, icon: '🌬️' },
-    { name: 'Git', percentage: 80, icon: '🐙' },
-    { name: 'Figma', percentage: 75, icon: '🎨' },
-  ],
+  ], // User data (duplicates removed)
   projects: [
     {
       title: 'Project Alpha',
@@ -45,10 +44,5 @@ export const localPortfolioData = {
       img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop',
       link: 'https://example.com/neon-dashboard',
     },
-    {
-      title: 'E-Commerce Platform',
-      img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop',
-      link: 'https://example.com/ecommerce',
-    },
-  ],
+  ], // User data (duplicates/empties removed)
 };

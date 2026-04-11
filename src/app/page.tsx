@@ -26,9 +26,10 @@ async function PortfolioContent({
 }) {
   const search = await searchParams;
   const themeOverride = search.theme ? parseInt(search.theme as string) : undefined;
+  const sheetId = (search.id as string) || undefined;
   
-  // Fetch life data from the default Google Sheet
-  const data = await getPortfolioData();
+  // Fetch data from Google Sheet using ?id= or default
+  const data = await getPortfolioData(sheetId);
   const { config, identity, skills, projects, experiences, services, testimonials, blogPosts } = data;
 
   // Override theme if specified in URL, only for premium users
